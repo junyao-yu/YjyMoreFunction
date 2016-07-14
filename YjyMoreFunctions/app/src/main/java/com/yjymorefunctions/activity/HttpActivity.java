@@ -1,8 +1,11 @@
 package com.yjymorefunctions.activity;
 
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.graphics.Palette;
 import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
@@ -24,6 +27,7 @@ import com.yjymorefunctions.model.TestModel;
 public class HttpActivity extends AppCompatActivity {
     private static final String URL = "http://www.tngou.net/api/lore/classify";
     private TextView tv;
+    private View view;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -31,6 +35,7 @@ public class HttpActivity extends AppCompatActivity {
         setContentView(R.layout.activity_http);
 
         tv = (TextView) findViewById(R.id.content);
+        view = findViewById(R.id.display_palette);
 
         findViewById(R.id.btn_get).setOnClickListener(new View.OnClickListener() {
             @Override
@@ -64,6 +69,24 @@ public class HttpActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
+            }
+        });
+
+
+        findViewById(R.id.btn_palette).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Bitmap  bitmap = BitmapFactory.decodeResource(getResources(), R.drawable.pic_teacher);
+                Palette.generateAsync(bitmap, new Palette.PaletteAsyncListener() {
+                    @Override
+                    public void onGenerated(Palette palette) {
+                        //得到一个调色板，可以获取颜色
+                        Palette.Swatch swatch = palette.getLightVibrantSwatch();//获取亮色
+                        if (null != swatch) {
+                            view.setBackgroundColor(swatch.getRgb());
+                        }
+                    }
+                });
             }
         });
     }

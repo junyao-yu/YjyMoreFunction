@@ -16,6 +16,17 @@
         android:layout_height="wrap_content"
         android:text="GET"/>
 
+    <Button
+        android:id="@+id/btn_palette"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="图片取色"/>
+    <View
+        android:id="@+id/display_palette"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"/>
+
+
     <TextView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
