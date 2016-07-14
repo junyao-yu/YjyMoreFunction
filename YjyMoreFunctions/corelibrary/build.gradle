@@ -26,4 +26,5 @@ dependencies {
     compile 'com.squareup.okhttp3:okhttp:3.2.0'
     compile 'com.mcxiaoke.volley:library:1.0.19'
     compile 'com.alibaba:fastjson:1.1.52.android'
+    compile 'com.orhanobut:logger:1.14'
 }

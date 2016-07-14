@@ -1,7 +1,6 @@
 package com.improve.utility.http;
 
 import android.text.TextUtils;
-import android.util.Log;
 
 import com.alibaba.fastjson.JSON;
 import com.android.volley.AuthFailureError;
@@ -52,11 +51,8 @@ public class NetRequest<T> extends Request<T> {
     protected Response<T> parseNetworkResponse(NetworkResponse response) {
         try {
             String data = new String(response.data,  HttpHeaderParser.parseCharset(response.headers));
-            Log.i("data--->", data);
             if (!TextUtils.isEmpty(data)) {
-                Log.i("step1--->", "1");
                 T responseObject = (T) JSON.parseObject(data, clazz);
-                Log.i("step1--->", "2");
                 return Response.success(responseObject,
                         HttpHeaderParser.parseCacheHeaders(response));
             }else {
@@ -64,7 +60,6 @@ public class NetRequest<T> extends Request<T> {
             }
         } catch (Exception e) {
             e.printStackTrace();
-            Log.i("Exception--->", e.getMessage());
             return Response.error(new ParseError(e));
         }
     }

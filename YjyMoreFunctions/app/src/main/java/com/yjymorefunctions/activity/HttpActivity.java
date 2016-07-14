@@ -6,7 +6,6 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.graphics.Palette;
-import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -16,6 +15,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.improve.utility.http.NetRequest;
 import com.improve.utility.http.NetWorkTools;
+import com.improve.utility.utils.LogUtil;
 import com.yjymorefunctions.R;
 import com.yjymorefunctions.model.TestModel;
 
@@ -53,9 +53,9 @@ public class HttpActivity extends AppCompatActivity {
                         TestModel testModel = (TestModel) response;
 
                         if(testModel.isStatus()) {
-                            Log.i("response--->", "true");
+                            LogUtil.i("response--->", "true");
                         }else {
-                            Log.i("response--->", "false");
+                            LogUtil.i("response--->", "false");
                         }
                     }
                 });
