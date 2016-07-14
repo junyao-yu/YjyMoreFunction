@@ -35,15 +35,15 @@ public class HttpActivity extends AppCompatActivity {
         findViewById(R.id.btn_get).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Request<TestModel> request = new NetRequest<TestModel>(Request.Method.GET, URL, null, new TestModel(), new Response.ErrorListener() {
+                Request<Object> request = new NetRequest<>(Request.Method.GET, URL, null, new TestModel(), new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
                         Toast.makeText(HttpActivity.this, "onErrorResponse", Toast.LENGTH_SHORT).show();
                     }
-                }, new Response.Listener<TestModel>(){
+                }, new Response.Listener<Object>(){
 
                     @Override
-                    public void onResponse(TestModel response) {
+                    public void onResponse(Object response) {
                                                 Toast.makeText(HttpActivity.this, "onResponse", Toast.LENGTH_SHORT).show();
                         TestModel testModel = (TestModel) response;
 
