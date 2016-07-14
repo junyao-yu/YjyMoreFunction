@@ -36,20 +36,20 @@ public class NetWorkTools {
         return instance;
     }
 
-    private void addRequest(Request request, Object tag) {
+    public void addRequest(Request request, Object tag) {
         if(requestQueue != null) {
             request.setTag(tag);
             requestQueue.add(request);
         }
     }
 
-    private void cancelRequest(Object tag) {
+    public void cancelRequest(Object tag) {
         if(requestQueue != null) {
             requestQueue.cancelAll(tag);
         }
     }
 
-    private void destory() {
+    public void destory() {
         if(requestQueue != null) {
             requestQueue.stop();
             requestQueue = null;
