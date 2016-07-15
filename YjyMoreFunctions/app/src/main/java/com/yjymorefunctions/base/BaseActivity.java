@@ -10,6 +10,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.FrameLayout;
 
+import com.improve.utility.views.TitleView;
 import com.yjymorefunctions.R;
 
 /**
@@ -18,6 +19,7 @@ import com.yjymorefunctions.R;
  * Email：yujunyao@yonglibao.com
  */
 public abstract class BaseActivity extends AppCompatActivity {
+    protected TitleView titleView;
     private FrameLayout baseContainer;
     private Activity activity;
 
@@ -29,12 +31,12 @@ public abstract class BaseActivity extends AppCompatActivity {
         initBaseView();
         initBaseData();
 
-        //intent不为空执行onInitParams函数，子类无需在此函数中判断intent是否为空，直接用即可
+        /**intent不为空执行onInitParams函数，子类无需在此函数中判断intent是否为空，直接用即可*/
         if(null != getIntent()) {
             onInitParams(getIntent());
         }
 
-        //在此函数中设置layout配置文件，以及实例化views（ButterKnife即可，简化代码）
+        /**在此函数中设置layout配置文件，以及实例化views（ButterKnife即可，简化代码）*/
         setupViews(savedInstanceState);
 
     }
@@ -106,6 +108,7 @@ public abstract class BaseActivity extends AppCompatActivity {
     /**********************************************activity初始化一些子类通用的方法********************************************************/
     protected void initBaseView() {
         baseContainer = (FrameLayout) findViewById(R.id.base_container);
+        titleView = (TitleView) findViewById(R.id.base_title_view);
     }
 
     protected void initBaseData() {

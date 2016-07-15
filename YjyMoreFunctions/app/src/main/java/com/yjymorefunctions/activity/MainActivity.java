@@ -26,6 +26,8 @@ public class MainActivity extends BaseActivity {
     protected void setupViews(Bundle savedInstanceState) {
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
+        titleView.setLeftImg(R.drawable.tip_no_news_icon);
+        titleView.setLeftTip("消息");
     }
 
     @OnClick({R.id.btn_share_preference, R.id.btn_http})
