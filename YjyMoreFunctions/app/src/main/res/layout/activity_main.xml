@@ -16,5 +16,10 @@
             android:layout_height="wrap_content"
             android:text="btn_http"
             android:id="@+id/btn_http"/>
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="upanddown"
+            android:id="@+id/btn_upanddown"/>
     </LinearLayout>
 </ScrollView>

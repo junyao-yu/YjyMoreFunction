@@ -30,7 +30,7 @@ public class MainActivity extends BaseActivity {
         titleView.setLeftTip("消息");
     }
 
-    @OnClick({R.id.btn_share_preference, R.id.btn_http})
+    @OnClick({R.id.btn_share_preference, R.id.btn_http, R.id.btn_upanddown})
     @Override
     public void onClickView(View view) {
         switch (view.getId()) {
@@ -39,6 +39,9 @@ public class MainActivity extends BaseActivity {
                 break;
             case R.id.btn_http:
                 startActivity(new Intent(MainActivity.this, HttpActivity.class));
+                break;
+            case R.id.btn_upanddown:
+                startActivity(new Intent(MainActivity.this, UpDownActivity.class));
                 break;
         }
     }
