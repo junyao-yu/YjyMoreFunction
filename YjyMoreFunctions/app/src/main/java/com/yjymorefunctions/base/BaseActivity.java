@@ -10,6 +10,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.FrameLayout;
 
+import com.improve.utility.AppManager;
 import com.improve.utility.views.TitleView;
 import com.yjymorefunctions.R;
 
@@ -27,6 +28,7 @@ public abstract class BaseActivity extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         super.setContentView(R.layout.activity_base);
+        AppManager.getAppManager().addActivity(this);
 
         initBaseView();
         initBaseData();
@@ -90,6 +92,7 @@ public abstract class BaseActivity extends AppCompatActivity {
     @Override
     protected void onDestroy() {
         super.onDestroy();
+        AppManager.getAppManager().removeActivity(this);
     }
 
     @Override

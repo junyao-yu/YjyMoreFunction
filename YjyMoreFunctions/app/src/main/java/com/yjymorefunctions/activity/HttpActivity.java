@@ -37,6 +37,8 @@ public class HttpActivity extends AppCompatActivity {
         tv = (TextView) findViewById(R.id.content);
         view = findViewById(R.id.display_palette);
 
+        tv.setText(getString(R.string.test, "接着", 100));
+
         findViewById(R.id.btn_get).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
