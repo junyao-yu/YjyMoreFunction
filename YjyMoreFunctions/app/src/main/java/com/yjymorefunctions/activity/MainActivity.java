@@ -3,12 +3,16 @@ package com.yjymorefunctions.activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Toast;
 
 import com.yjymorefunctions.R;
 import com.yjymorefunctions.base.BaseActivity;
 
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import de.greenrobot.event.EventBus;
+import de.greenrobot.event.Subscribe;
+import de.greenrobot.event.ThreadMode;
 
 /**
  * Auth：yujunyao
@@ -16,6 +20,7 @@ import butterknife.OnClick;
  * Email：yujunyao@yonglibao.com
  */
 public class MainActivity extends BaseActivity {
+
 
     @Override
     protected void onInitParams(Intent intent) {
@@ -28,7 +33,20 @@ public class MainActivity extends BaseActivity {
         ButterKnife.bind(this);
         titleView.setLeftImg(R.drawable.tip_no_news_icon);
         titleView.setLeftTip("消息");
+        EventBus.getDefault().register(this);
     }
+
+    @Subscribe(threadMode = ThreadMode.MainThread)
+    public void sfdfdsfdf(String msg) {
+        Toast.makeText(this, "MainActivity--->" + msg, Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        EventBus.getDefault().unregister(this);
+    }
+
 
     @OnClick({R.id.btn_share_preference, R.id.btn_http, R.id.btn_upanddown})
     @Override

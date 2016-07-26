@@ -25,6 +25,8 @@
         <activity android:name=".activity.HttpActivity"/>
 
         <activity android:name=".activity.UpDownActivity"/>
+
+        <activity android:name=".activity.TestEventBusActivity"/>
     </application>
 
 </manifest>

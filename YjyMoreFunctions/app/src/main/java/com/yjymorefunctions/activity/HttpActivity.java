@@ -1,5 +1,6 @@
 package com.yjymorefunctions.activity;
 
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
@@ -18,6 +19,10 @@ import com.improve.utility.http.NetWorkTools;
 import com.improve.utility.utils.LogUtil;
 import com.yjymorefunctions.R;
 import com.yjymorefunctions.model.TestModel;
+
+import de.greenrobot.event.EventBus;
+import de.greenrobot.event.Subscribe;
+import de.greenrobot.event.ThreadMode;
 
 /**
  * Auth：yujunyao
@@ -70,7 +75,7 @@ public class HttpActivity extends AppCompatActivity {
         findViewById(R.id.btn_post).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                startActivity(new Intent(HttpActivity.this, TestEventBusActivity.class));
             }
         });
 
@@ -91,5 +96,25 @@ public class HttpActivity extends AppCompatActivity {
                 });
             }
         });
+    }
+    boolean bFlag = false;
+    @Override
+    protected void onResume() {
+        super.onResume();
+        if (bFlag) {
+            EventBus.getDefault().register(this);
+        }
+        bFlag = true;
+    }
+
+    @Subscribe(threadMode = ThreadMode.MainThread, sticky = true)
+    public void helloWrold(String msg) {
+        Toast.makeText(this, "HttpActivity--->" + msg, Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        EventBus.getDefault().unregister(this);
     }
 }
