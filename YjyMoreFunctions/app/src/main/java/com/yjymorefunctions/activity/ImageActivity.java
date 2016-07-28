@@ -6,7 +6,6 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
 
-import com.squareup.picasso.MemoryPolicy;
 import com.squareup.picasso.Picasso;
 import com.squareup.picasso.Transformation;
 import com.yjymorefunctions.R;
@@ -43,10 +42,20 @@ public class ImageActivity extends BaseActivity {
                 .config(Bitmap.Config.RGB_565)//比ARGB_8888图片内存占用少一半
                 .tag(this)
                 //NO_CACHE是指图片加载时放弃在内存缓存中查找，NO_STORE是指图片加载完不缓存在内存中。但可以从磁盘查找如有，无网络也可显示
-                .memoryPolicy(MemoryPolicy.NO_CACHE, MemoryPolicy.NO_STORE)
+//                .memoryPolicy(MemoryPolicy.NO_CACHE, MemoryPolicy.NO_STORE)
                 .into(image)
         ;
 
+//        String a = "哇哈哈哈[em:5]aa8888[em:7]";
+//        String r = "\\[em:(\\d+)\\]";
+//        a = a.replaceAll(r, "$1.gif");
+//        System.out.println(a);// 哇哈哈哈5.gifaa88887.gif
+
+//        String regexEmotion = "\\/+([\u4e00-\u9fa5]\\w)";//或者  \/+([^\x00-\xff]\w)//限定死斜杠后面两个中文
+        String regexEmotion =  "\\/+([\u4e00-\u9fa5]{1,5})";
+        String b = "我们今晚去吃鱼/害羞对啥地";
+        b = b.replaceAll(regexEmotion, "$1.png");
+        System.out.println(b);
     }
 
     @Override
