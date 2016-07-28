@@ -27,6 +27,8 @@
         <activity android:name=".activity.UpDownActivity"/>
 
         <activity android:name=".activity.TestEventBusActivity"/>
+
+        <activity android:name=".activity.ImageActivity"/>
     </application>
 
 </manifest>
