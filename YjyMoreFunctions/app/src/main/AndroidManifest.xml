@@ -29,6 +29,8 @@
         <activity android:name=".activity.TestEventBusActivity"/>
 
         <activity android:name=".activity.ImageActivity"/>
+
+        <activity android:name=".activity.TestTouchEventActivity"/>
     </application>
 
 </manifest>

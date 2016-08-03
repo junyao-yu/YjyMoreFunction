@@ -26,6 +26,10 @@
             android:layout_height="wrap_content"
             android:text="loader_image"
             android:id="@+id/btn_loader_image"/>
-
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="touch_event"
+            android:id="@+id/btn_touch_event"/>
     </LinearLayout>
 </ScrollView>

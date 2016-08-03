@@ -48,7 +48,7 @@ public class MainActivity extends BaseActivity {
     }
 
 
-    @OnClick({R.id.btn_share_preference, R.id.btn_http, R.id.btn_upanddown, R.id.btn_loader_image})
+    @OnClick({R.id.btn_share_preference, R.id.btn_http, R.id.btn_upanddown, R.id.btn_loader_image, R.id.btn_touch_event})
     @Override
     public void onClickView(View view) {
         switch (view.getId()) {
@@ -63,6 +63,9 @@ public class MainActivity extends BaseActivity {
                 break;
             case R.id.btn_loader_image:
                 startActivity(new Intent(MainActivity.this, ImageActivity.class));
+                break;
+            case R.id.btn_touch_event:
+                startActivity(new Intent(MainActivity.this, TestTouchEventActivity.class));
                 break;
         }
     }
