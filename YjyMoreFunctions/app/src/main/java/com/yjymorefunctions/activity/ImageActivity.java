@@ -53,7 +53,7 @@ public class ImageActivity extends BaseActivity {
 
 //        String regexEmotion = "\\/+([\u4e00-\u9fa5]\\w)";//或者  \/+([^\x00-\xff]\w)//限定死斜杠后面两个中文
         String regexEmotion =  "\\/+([\u4e00-\u9fa5]{1,5})";
-        String b = "我们今晚去吃鱼/害羞对啥地";
+        String b = "我们今晚去吃鱼/你/你好/你真好/你真真好/你真真真好";
         b = b.replaceAll(regexEmotion, "$1.png");
         System.out.println(b);
     }

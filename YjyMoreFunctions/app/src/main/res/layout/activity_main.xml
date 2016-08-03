@@ -26,5 +26,6 @@
             android:layout_height="wrap_content"
             android:text="loader_image"
             android:id="@+id/btn_loader_image"/>
+
     </LinearLayout>
 </ScrollView>
