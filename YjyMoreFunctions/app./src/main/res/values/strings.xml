@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">YjyMoreFunctions</string>
+    <string name="test" formatted="false">测试%s，%d测试</string>
+</resources>

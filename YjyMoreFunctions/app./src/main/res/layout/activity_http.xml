@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent">
+
+    <Button
+        android:id="@+id/btn_post"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="POST"/>
+
+    <Button
+        android:id="@+id/btn_get"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="GET"/>
+
+    <Button
+        android:id="@+id/btn_palette"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="图片取色"/>
+    <View
+        android:id="@+id/display_palette"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"/>
+
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/content"/>
+
+</LinearLayout>
