@@ -48,7 +48,8 @@ public class MainActivity extends BaseActivity {
     }
 
 
-    @OnClick({R.id.btn_share_preference, R.id.btn_http, R.id.btn_upanddown, R.id.btn_loader_image, R.id.btn_touch_event})
+    @OnClick({R.id.btn_share_preference, R.id.btn_http, R.id.btn_upanddown, R.id.btn_loader_image, R.id.btn_touch_event, R.id.btn_fragment
+    ,R.id.btn_vertical_scroll})
     @Override
     public void onClickView(View view) {
         switch (view.getId()) {
@@ -66,6 +67,12 @@ public class MainActivity extends BaseActivity {
                 break;
             case R.id.btn_touch_event:
                 startActivity(new Intent(MainActivity.this, TestTouchEventActivity.class));
+                break;
+            case R.id.btn_fragment:
+                startActivity(new Intent(MainActivity.this, DisplayFragmentActivity.class));
+                break;
+            case R.id.btn_vertical_scroll:
+                startActivity(new Intent(MainActivity.this, VerticalScrollActivity.class));
                 break;
         }
     }

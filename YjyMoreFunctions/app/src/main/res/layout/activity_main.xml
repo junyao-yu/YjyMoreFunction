@@ -31,5 +31,16 @@
             android:layout_height="wrap_content"
             android:text="touch_event"
             android:id="@+id/btn_touch_event"/>
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="fragment"
+            android:id="@+id/btn_fragment"/>
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="vertical_scroll"
+            android:id="@+id/btn_vertical_scroll"/>
     </LinearLayout>
+
 </ScrollView>
