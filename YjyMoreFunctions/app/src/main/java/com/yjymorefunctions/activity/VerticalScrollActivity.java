@@ -92,6 +92,12 @@ public class VerticalScrollActivity extends BaseActivity {
     }
 
     @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        index = -1;
+    }
+
+    @Override
     protected void onClickView(View view) {
 
     }
