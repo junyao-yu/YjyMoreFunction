@@ -41,6 +41,11 @@
             android:layout_height="wrap_content"
             android:text="vertical_scroll"
             android:id="@+id/btn_vertical_scroll"/>
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="storage_in_app"
+            android:id="@+id/btn_storage_in_app"/>
     </LinearLayout>
 
 </ScrollView>

@@ -35,6 +35,8 @@
         <activity android:name=".activity.DisplayFragmentActivity"/>
 
         <activity android:name=".activity.VerticalScrollActivity"/>
+
+        <activity android:name=".activity.StorageInAppActivity"/>
     </application>
 
 </manifest>
