@@ -88,6 +88,6 @@ public class BaseFragment extends Fragment {
     @Override
     public void setUserVisibleHint(boolean isVisibleToUser) {
         super.setUserVisibleHint(isVisibleToUser);
-        LogUtil.i(TAG, "setUserVisibleHint isVisibleToUser = " + isVisibleToUser);
+//        LogUtil.i(TAG, "setUserVisibleHint isVisibleToUser = " + isVisibleToUser);
     }
 }
