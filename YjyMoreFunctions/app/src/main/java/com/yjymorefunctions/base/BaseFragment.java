@@ -15,7 +15,7 @@ import com.improve.utility.utils.LogUtil;
  * Since: 2016/8/9 17:57
  * Email：yujunyao@yonglibao.com
  */
-public class BaseFragment extends Fragment {
+public abstract class BaseFragment extends Fragment {
     private static final String TAG = "BaseFragment";
 
     @Override
@@ -85,9 +85,23 @@ public class BaseFragment extends Fragment {
         LogUtil.i(TAG, "onDetach");
     }
 
+    protected boolean isVisible;
     @Override
     public void setUserVisibleHint(boolean isVisibleToUser) {
         super.setUserVisibleHint(isVisibleToUser);
-//        LogUtil.i(TAG, "setUserVisibleHint isVisibleToUser = " + isVisibleToUser);
+        LogUtil.i(TAG, "setUserVisibleHint isVisibleToUser = " + isVisibleToUser);
+        if(getUserVisibleHint()) {
+            isVisible = true;
+            onVisible();
+        } else {
+            isVisible = false;
+            onInvisible();
+        }
     }
+
+    protected void onVisible(){
+        lazyLoad();
+    }
+    protected abstract void lazyLoad();
+    protected void onInvisible(){}
 }
