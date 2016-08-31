@@ -38,6 +38,8 @@
         <activity android:name=".activity.VerticalScrollActivity"/>
 
         <activity android:name=".activity.StorageInAppActivity"/>
+
+        <activity android:name=".activity.RxJavaAndroidActivity"/>
     </application>
 
 </manifest>
