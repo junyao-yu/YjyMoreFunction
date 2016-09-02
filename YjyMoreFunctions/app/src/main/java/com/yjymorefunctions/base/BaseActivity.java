@@ -15,6 +15,8 @@ import com.improve.utility.AppManager;
 import com.improve.utility.views.TitleView;
 import com.yjymorefunctions.R;
 
+import butterknife.ButterKnife;
+
 /**
  * Auth：yujunyao
  * Since: 2016/7/15 10:40
@@ -29,10 +31,14 @@ public abstract class BaseActivity extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         super.setContentView(R.layout.activity_base);
-        AppManager.getAppManager().addActivity(this);
-
         initBaseView();
         initBaseData();
+        setContentView(getLayoutResId());
+        ButterKnife.bind(this);
+
+        AppManager.getAppManager().addActivity(this);
+
+
 
         /**intent不为空执行onInitParams函数，子类无需在此函数中判断intent是否为空，直接用即可*/
         if(null != getIntent()) {
@@ -78,6 +84,8 @@ public abstract class BaseActivity extends AppCompatActivity {
     protected void physicalKeyBack() {
         this.finish();
     }
+
+    protected abstract int getLayoutResId();
 
     /**********************************************重写activity的一些方法********************************************************/
     @Override

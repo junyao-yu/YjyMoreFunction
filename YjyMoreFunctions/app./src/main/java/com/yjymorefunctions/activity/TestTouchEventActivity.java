@@ -12,7 +12,6 @@ import com.yjymorefunctions.views.MyLinearLayout;
 import com.yjymorefunctions.views.MyView;
 
 import butterknife.Bind;
-import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 /**
@@ -37,8 +36,8 @@ public class TestTouchEventActivity extends BaseActivity {
 
     @Override
     protected void setupViews(Bundle savedInstanceState) {
-        setContentView(R.layout.activity_touch_event);
-        ButterKnife.bind(this);
+//        setContentView(R.layout.activity_touch_event);
+//        ButterKnife.bind(this);
         outerLl.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
@@ -134,6 +133,11 @@ public class TestTouchEventActivity extends BaseActivity {
                 Log.i(MyView.TAG, "onclick");
                 break;
         }
+    }
+
+    @Override
+    protected int getLayoutResId() {
+        return R.layout.activity_touch_event;
     }
 
     @Override

@@ -20,7 +20,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.Bind;
-import butterknife.ButterKnife;
 import rx.Observable;
 import rx.Observer;
 import rx.Subscriber;
@@ -51,8 +50,8 @@ public class RxJavaAndroidActivity extends BaseActivity {
 
     @Override
     protected void setupViews(Bundle savedInstanceState) {
-        setContentView(R.layout.activity_rxjava_android);
-        ButterKnife.bind(this);
+//        setContentView(R.layout.activity_rxjava_android);
+//        ButterKnife.bind(this);
 
         Observer<String> observer = new Observer<String>() {
             @Override
@@ -215,6 +214,11 @@ public class RxJavaAndroidActivity extends BaseActivity {
     @Override
     protected void onClickView(View view) {
 
+    }
+
+    @Override
+    protected int getLayoutResId() {
+        return R.layout.activity_rxjava_android;
     }
 
     public class Student {

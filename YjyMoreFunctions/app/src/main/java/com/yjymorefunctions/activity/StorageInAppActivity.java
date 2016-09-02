@@ -13,7 +13,6 @@ import org.apache.http.util.EncodingUtils;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 
-import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 /**
@@ -35,8 +34,8 @@ public class StorageInAppActivity extends BaseActivity {
 
     @Override
     protected void setupViews(Bundle savedInstanceState) {
-        setContentView(R.layout.activity_storage_in_app);
-        ButterKnife.bind(this);
+//        setContentView(R.layout.activity_storage_in_app);
+//        ButterKnife.bind(this);
     }
 
     @OnClick({R.id.btn_write, R.id.btn_read, R.id.btn_delete})
@@ -53,6 +52,11 @@ public class StorageInAppActivity extends BaseActivity {
                 deleteFileData(fileName);
                 break;
         }
+    }
+
+    @Override
+    protected int getLayoutResId() {
+        return R.layout.activity_storage_in_app;
     }
 
     //向指定的文件中写入指定的数据

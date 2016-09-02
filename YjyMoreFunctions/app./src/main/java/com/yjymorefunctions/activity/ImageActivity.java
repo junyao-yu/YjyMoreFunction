@@ -12,7 +12,6 @@ import com.yjymorefunctions.R;
 import com.yjymorefunctions.base.BaseActivity;
 
 import butterknife.Bind;
-import butterknife.ButterKnife;
 
 /**
  * Auth：yujunyao
@@ -32,8 +31,8 @@ public class ImageActivity extends BaseActivity {
 
     @Override
     protected void setupViews(Bundle savedInstanceState) {
-        setContentView(R.layout.activity_image);
-        ButterKnife.bind(this);
+//        setContentView(R.layout.activity_image);
+//        ButterKnife.bind(this);
 
         //picasso可以对多个加载请求设置相同的tag
         Picasso.with(this)
@@ -61,6 +60,11 @@ public class ImageActivity extends BaseActivity {
     @Override
     protected void onClickView(View view) {
 
+    }
+
+    @Override
+    protected int getLayoutResId() {
+        return R.layout.activity_image;
     }
 
     Transformation transformation = new Transformation() {

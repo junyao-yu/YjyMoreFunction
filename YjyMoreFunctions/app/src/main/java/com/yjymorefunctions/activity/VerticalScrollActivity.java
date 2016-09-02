@@ -18,7 +18,6 @@ import com.yjymorefunctions.R;
 import com.yjymorefunctions.base.BaseActivity;
 
 import butterknife.Bind;
-import butterknife.ButterKnife;
 
 /**
  * Auth：yujunyao
@@ -33,6 +32,9 @@ public class VerticalScrollActivity extends BaseActivity {
         @Override
         public void handleMessage(Message msg) {
             super.handleMessage(msg);
+            if(index >= array.length || index < 0) {
+                return ;
+            }
             verticalScrollText.setText(array[index]);
             index++;
             if (index == array.length) {
@@ -51,8 +53,8 @@ public class VerticalScrollActivity extends BaseActivity {
 
     @Override
     protected void setupViews(Bundle savedInstanceState) {
-        setContentView(R.layout.activity_vertical_scroll);
-        ButterKnife.bind(this);
+//        setContentView(R.layout.activity_vertical_scroll);
+//        ButterKnife.bind(this);
 
         verticalScrollText.setFactory(new ViewSwitcher.ViewFactory() {
             @Override
@@ -100,6 +102,11 @@ public class VerticalScrollActivity extends BaseActivity {
     @Override
     protected void onClickView(View view) {
 
+    }
+
+    @Override
+    protected int getLayoutResId() {
+        return R.layout.activity_vertical_scroll;
     }
 
 }

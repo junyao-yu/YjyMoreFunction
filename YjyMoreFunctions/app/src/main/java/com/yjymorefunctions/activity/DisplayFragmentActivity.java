@@ -16,7 +16,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.Bind;
-import butterknife.ButterKnife;
 
 /**
  * Auth：yujunyao
@@ -44,8 +43,8 @@ public class DisplayFragmentActivity extends BaseActivity {
 
     @Override
     protected void setupViews(Bundle savedInstanceState) {
-        setContentView(R.layout.activity_display_fragment);
-        ButterKnife.bind(this);
+//        setContentView(R.layout.activity_display_fragment);
+//        ButterKnife.bind(this);
 
         tabLayout.setTabMode(TabLayout.MODE_SCROLLABLE);
         adapter = new SubFragmentPagerAdapter(getSupportFragmentManager());
@@ -102,6 +101,11 @@ public class DisplayFragmentActivity extends BaseActivity {
     @Override
     protected void onClickView(View view) {
 
+    }
+
+    @Override
+    protected int getLayoutResId() {
+        return R.layout.activity_display_fragment;
     }
 
 //    protected void switchFragment(Fragment pFrgmnt) {

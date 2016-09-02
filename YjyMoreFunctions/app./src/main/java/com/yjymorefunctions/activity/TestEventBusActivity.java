@@ -7,7 +7,6 @@ import android.view.View;
 import com.yjymorefunctions.R;
 import com.yjymorefunctions.base.BaseActivity;
 
-import butterknife.ButterKnife;
 import butterknife.OnClick;
 import de.greenrobot.event.EventBus;
 
@@ -25,8 +24,8 @@ public class TestEventBusActivity extends BaseActivity {
 
     @Override
     protected void setupViews(Bundle savedInstanceState) {
-        setContentView(R.layout.activity_eventbus);
-        ButterKnife.bind(this);
+//        setContentView(R.layout.activity_eventbus);
+//        ButterKnife.bind(this);
 //        EventBus.getDefault().post("你好啊");
 //        EventBus.getDefault().postSticky("啦啦啦");
     }
@@ -36,5 +35,10 @@ public class TestEventBusActivity extends BaseActivity {
     protected void onClickView(View view) {
         //粘性事件，能够收到订阅之前发送的消息。但是它只能收到最新的一次消息
         EventBus.getDefault().postSticky("啦啦啦");
+    }
+
+    @Override
+    protected int getLayoutResId() {
+        return R.layout.activity_eventbus;
     }
 }

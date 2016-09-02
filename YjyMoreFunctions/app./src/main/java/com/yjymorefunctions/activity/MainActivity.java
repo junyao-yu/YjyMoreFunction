@@ -8,7 +8,6 @@ import android.widget.Toast;
 import com.yjymorefunctions.R;
 import com.yjymorefunctions.base.BaseActivity;
 
-import butterknife.ButterKnife;
 import butterknife.OnClick;
 import de.greenrobot.event.EventBus;
 import de.greenrobot.event.Subscribe;
@@ -29,8 +28,8 @@ public class MainActivity extends BaseActivity {
 
     @Override
     protected void setupViews(Bundle savedInstanceState) {
-        setContentView(R.layout.activity_main);
-        ButterKnife.bind(this);
+//        setContentView(R.layout.activity_main);
+//        ButterKnife.bind(this);
         titleView.setLeftImg(R.drawable.tip_no_news_icon);
         titleView.setLeftTip("消息");
         EventBus.getDefault().register(this);
@@ -81,5 +80,10 @@ public class MainActivity extends BaseActivity {
                 startActivity(new Intent(MainActivity.this, RxJavaAndroidActivity.class));
                 break;
         }
+    }
+
+    @Override
+    protected int getLayoutResId() {
+        return R.layout.activity_main;
     }
 }

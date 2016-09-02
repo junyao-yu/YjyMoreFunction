@@ -11,7 +11,6 @@ import com.improve.utility.utils.upanddown.ProgressListener;
 import com.yjymorefunctions.R;
 import com.yjymorefunctions.base.BaseActivity;
 
-import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 /**
@@ -28,8 +27,8 @@ public class UpDownActivity extends BaseActivity {
 
     @Override
     protected void setupViews(Bundle savedInstanceState) {
-        setContentView(R.layout.activity_updown);
-        ButterKnife.bind(this);
+//        setContentView(R.layout.activity_updown);
+//        ButterKnife.bind(this);
         path = Environment.getExternalStorageDirectory().getPath();
     }
 
@@ -74,5 +73,10 @@ public class UpDownActivity extends BaseActivity {
 
                 break;
         }
+    }
+
+    @Override
+    protected int getLayoutResId() {
+        return R.layout.activity_updown;
     }
 }
