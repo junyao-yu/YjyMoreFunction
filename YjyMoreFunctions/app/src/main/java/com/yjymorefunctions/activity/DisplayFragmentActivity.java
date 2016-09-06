@@ -21,6 +21,8 @@ import butterknife.Bind;
  * Auth：yujunyao
  * Since: 2016/8/9 18:12
  * Email：yujunyao@yonglibao.com
+ *
+ * viewPager预加载问题解决  http://blog.csdn.net/qq_21898059/article/details/51453938
  */
 public class DisplayFragmentActivity extends BaseActivity {
 //    @Bind(R.id.fragment_life)
