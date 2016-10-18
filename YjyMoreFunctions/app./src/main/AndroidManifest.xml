@@ -40,6 +40,8 @@
         <activity android:name=".activity.StorageInAppActivity"/>
 
         <activity android:name=".activity.RxJavaAndroidActivity"/>
+
+        <activity android:name=".activity.GreenDaoActivity"/>
     </application>
 
 </manifest>
