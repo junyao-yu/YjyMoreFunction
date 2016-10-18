@@ -51,6 +51,8 @@
             android:layout_height="wrap_content"
             android:text="rxjava_android"
             android:id="@+id/btn_rxjava_android"/>
+
+
     </LinearLayout>
 
 </ScrollView>

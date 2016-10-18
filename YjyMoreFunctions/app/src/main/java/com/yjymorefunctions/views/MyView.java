@@ -27,6 +27,7 @@ public class MyView extends View {
         super(context, attrs, defStyleAttr);
     }
 
+    //事件的调度顺序应该是 onTouchListener > onTouchEvent > onLongClickListener > onClickListener
     @Override
     public boolean dispatchTouchEvent(MotionEvent event) {
         Log.i(TAG, "dispatchTouchEvent");
