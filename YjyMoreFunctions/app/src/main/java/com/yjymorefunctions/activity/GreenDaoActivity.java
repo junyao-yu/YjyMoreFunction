@@ -8,6 +8,7 @@ import android.widget.TextView;
 import com.yjymorefunctions.R;
 import com.yjymorefunctions.base.BaseActivity;
 import com.yjymorefunctions.model.Student;
+import com.yjymorefunctions.model.Teacher;
 import com.yjymorefunctions.utils.DbHelper;
 
 import java.util.List;
@@ -19,6 +20,11 @@ import butterknife.OnClick;
  * Auth：yujunyao
  * Since: 2016/10/18 16:53
  * Email：yujunyao@yonglibao.com
+ * http://www.cnblogs.com/dsxniubility/archive/2016/07/28/5699543.html   GreenDao3.0新特性解析（配置、注解、加密）
+ *
+ * http://blog.csdn.net/ghsy121/article/details/52132148  数据库增加表与更新字段语法 GREENDAO
+ *
+ * http://blog.csdn.net/HHcoco/article/details/52384125?locationNum=2  GreenDao Encrypt
  */
 public class GreenDaoActivity extends BaseActivity {
     @Bind(R.id.display)
@@ -40,12 +46,20 @@ public class GreenDaoActivity extends BaseActivity {
         String content = "";
         switch (view.getId()) {
             case R.id.insert:
-                DbHelper.getInstance(this).insertStudent(getStudent());
+//                DbHelper.getInstance(this).insertStudent(getStudent());
+
+                DbHelper.getInstance(this).insertTeacher(getTeacher());
                 break;
             case R.id.query:
-                List<Student> studentList = DbHelper.getInstance(this).queryStudentList();
+//                List<Student> studentList = DbHelper.getInstance(this).queryStudentList();
+//                for(int i=0;i<studentList.size();i++) {
+//                    content += studentList.get(i).getId() + "," +  studentList.get(i).getName() + "," + studentList.get(i).getAge() + "," + studentList.get(i).getBirthday() + "\n";
+//                }
+//                display.setText(content);
+
+                List<Teacher> studentList = DbHelper.getInstance(this).queryTeacherList();
                 for(int i=0;i<studentList.size();i++) {
-                    content += studentList.get(i).getId() + "," +  studentList.get(i).getName() + "," + studentList.get(i).getAge() + "," + studentList.get(i).getBirthday() + "\n";
+                    content += studentList.get(i).getId() + "," +  studentList.get(i).getSubject() + "," + studentList.get(i).getSalary() +  "\n";
                 }
                 display.setText(content);
                 break;
@@ -74,6 +88,13 @@ public class GreenDaoActivity extends BaseActivity {
 //                display.setText(content);
 //                break;
         }
+    }
+
+    private Teacher getTeacher() {
+        Teacher teacher = new Teacher();
+        teacher.setSubject("数学");
+        teacher.setSalary(6000);
+        return teacher;
     }
 
     private Student getStudent() {
