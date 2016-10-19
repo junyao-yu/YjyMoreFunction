@@ -7,10 +7,9 @@ import android.widget.TextView;
 
 import com.yjymorefunctions.R;
 import com.yjymorefunctions.base.BaseActivity;
-import com.yjymorefunctions.model.User;
-import com.yjymorefunctions.utils.DBManager;
+import com.yjymorefunctions.model.Student;
+import com.yjymorefunctions.utils.DbHelper;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.Bind;
@@ -41,30 +40,48 @@ public class GreenDaoActivity extends BaseActivity {
         String content = "";
         switch (view.getId()) {
             case R.id.insert:
-                DBManager.getInstance(this).insertUser(new User(1, "yjy", 28));
-                break;
-            case R.id.insert_array:
-                List<User> list = new ArrayList<>();
-                for(int i=2;i<7;i++) {
-                    list.add(new User(i, "lalala", 27));
-                }
-                DBManager.getInstance(this).insertUserList(list);
-                break;
-            case R.id.delete:
-//                DBManager.getInstance(this).deleteUser(new User(4, "lalala", 27));
-                DBManager.getInstance(this).deleteCondition(4);
-                break;
-            case R.id.update:
-                DBManager.getInstance(this).updateUser(new User(3, "hahaha", 27));
+                DbHelper.getInstance(this).insertStudent(getStudent());
                 break;
             case R.id.query:
-                List<User> userList = DBManager.getInstance(this).queryUserList();
-                for(int i=0;i<userList.size();i++) {
-                    content += userList.get(i).getId() + "," +  userList.get(i).getName() + "," + userList.get(i).getAge() + "\n";
+                List<Student> studentList = DbHelper.getInstance(this).queryStudentList();
+                for(int i=0;i<studentList.size();i++) {
+                    content += studentList.get(i).getId() + "," +  studentList.get(i).getName() + "," + studentList.get(i).getAge() + "," + studentList.get(i).getBirthday() + "\n";
                 }
                 display.setText(content);
                 break;
+//            case R.id.insert:
+//                DBManager.getInstance(this).insertUser(new User(1, "yjy", 28));
+//                break;
+//            case R.id.insert_array:
+//                List<User> list = new ArrayList<>();
+//                for(int i=2;i<7;i++) {
+//                    list.add(new User(i, "lalala", 27));
+//                }
+//                DBManager.getInstance(this).insertUserList(list);
+//                break;
+//            case R.id.delete:
+////                DBManager.getInstance(this).deleteUser(new User(4, "lalala", 27));
+//                DBManager.getInstance(this).deleteCondition(4);
+//                break;
+//            case R.id.update:
+//                DBManager.getInstance(this).updateUser(new User(3, "hahaha", 27));
+//                break;
+//            case R.id.query:
+//                List<User> userList = DBManager.getInstance(this).queryUserList();
+//                for(int i=0;i<userList.size();i++) {
+//                    content += userList.get(i).getId() + "," +  userList.get(i).getName() + "," + userList.get(i).getAge() + "\n";
+//                }
+//                display.setText(content);
+//                break;
         }
+    }
+
+    private Student getStudent() {
+        Student student = new Student();
+        student.setName("sjb");
+        student.setAge(27);
+        student.setBirthday("1125");
+        return student;
     }
 
     @Override
