@@ -22,7 +22,7 @@ public class TeacherDao extends AbstractDao<Teacher, Long> {
      * Can be used for QueryBuilder and for referencing column names.
     */
     public static class Properties {
-        public final static Property Id = new Property(0, long.class, "id", true, "autoId");
+        public final static Property Id = new Property(0, Long.class, "id", true, "autoId");
         public final static Property Subject = new Property(1, String.class, "subject", false, "SUBJECT");
         public final static Property Salary = new Property(2, int.class, "salary", false, "SALARY");
     };
@@ -40,7 +40,7 @@ public class TeacherDao extends AbstractDao<Teacher, Long> {
     public static void createTable(Database db, boolean ifNotExists) {
         String constraint = ifNotExists? "IF NOT EXISTS ": "";
         db.execSQL("CREATE TABLE " + constraint + "\"teacher\" (" + //
-                "\"autoId\" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL ," + // 0: id
+                "\"autoId\" INTEGER PRIMARY KEY AUTOINCREMENT ," + // 0: id
                 "\"SUBJECT\" TEXT," + // 1: subject
                 "\"SALARY\" INTEGER NOT NULL );"); // 2: salary
     }
@@ -54,7 +54,11 @@ public class TeacherDao extends AbstractDao<Teacher, Long> {
     @Override
     protected final void bindValues(DatabaseStatement stmt, Teacher entity) {
         stmt.clearBindings();
-        stmt.bindLong(1, entity.getId());
+ 
+        Long id = entity.getId();
+        if (id != null) {
+            stmt.bindLong(1, id);
+        }
  
         String subject = entity.getSubject();
         if (subject != null) {
@@ -66,7 +70,11 @@ public class TeacherDao extends AbstractDao<Teacher, Long> {
     @Override
     protected final void bindValues(SQLiteStatement stmt, Teacher entity) {
         stmt.clearBindings();
-        stmt.bindLong(1, entity.getId());
+ 
+        Long id = entity.getId();
+        if (id != null) {
+            stmt.bindLong(1, id);
+        }
  
         String subject = entity.getSubject();
         if (subject != null) {
@@ -77,13 +85,13 @@ public class TeacherDao extends AbstractDao<Teacher, Long> {
 
     @Override
     public Long readKey(Cursor cursor, int offset) {
-        return cursor.getLong(offset + 0);
+        return cursor.isNull(offset + 0) ? null : cursor.getLong(offset + 0);
     }    
 
     @Override
     public Teacher readEntity(Cursor cursor, int offset) {
         Teacher entity = new Teacher( //
-            cursor.getLong(offset + 0), // id
+            cursor.isNull(offset + 0) ? null : cursor.getLong(offset + 0), // id
             cursor.isNull(offset + 1) ? null : cursor.getString(offset + 1), // subject
             cursor.getInt(offset + 2) // salary
         );
@@ -92,7 +100,7 @@ public class TeacherDao extends AbstractDao<Teacher, Long> {
      
     @Override
     public void readEntity(Cursor cursor, Teacher entity, int offset) {
-        entity.setId(cursor.getLong(offset + 0));
+        entity.setId(cursor.isNull(offset + 0) ? null : cursor.getLong(offset + 0));
         entity.setSubject(cursor.isNull(offset + 1) ? null : cursor.getString(offset + 1));
         entity.setSalary(cursor.getInt(offset + 2));
      }

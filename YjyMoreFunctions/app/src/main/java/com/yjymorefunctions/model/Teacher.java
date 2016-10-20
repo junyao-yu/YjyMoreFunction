@@ -2,8 +2,8 @@ package com.yjymorefunctions.model;
 
 import org.greenrobot.greendao.annotation.Entity;
 import org.greenrobot.greendao.annotation.Id;
-import org.greenrobot.greendao.annotation.Generated;
 import org.greenrobot.greendao.annotation.Property;
+import org.greenrobot.greendao.annotation.Generated;
 
 /**
  * Auth：yujunyao
@@ -15,7 +15,7 @@ public class Teacher {
 
     @Id(autoincrement = true)
     @Property(nameInDb = "autoId")
-    private long id;
+    private Long id = null;//这个要设置Long且为null,否则报错UNIQUE constraint failed: teacher.autoId
 
     private String subject;
 
@@ -37,16 +37,16 @@ public class Teacher {
         this.subject = subject;
     }
 
-    public long getId() {
+    public Long getId() {
         return this.id;
     }
 
-    public void setId(long id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
-    @Generated(hash = 30419342)
-    public Teacher(long id, String subject, int salary) {
+    @Generated(hash = 193902963)
+    public Teacher(Long id, String subject, int salary) {
         this.id = id;
         this.subject = subject;
         this.salary = salary;
@@ -55,6 +55,6 @@ public class Teacher {
     @Generated(hash = 1630413260)
     public Teacher() {
     }
-    
+
 
 }

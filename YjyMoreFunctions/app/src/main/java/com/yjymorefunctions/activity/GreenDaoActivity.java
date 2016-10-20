@@ -95,8 +95,8 @@ public class GreenDaoActivity extends BaseActivity {
 
     private Teacher getTeacher() {
         Teacher teacher = new Teacher();
-        teacher.setSubject("英语");
-        teacher.setSalary(6500);
+        teacher.setSubject("数学");
+        teacher.setSalary(6000);
         return teacher;
     }
 
