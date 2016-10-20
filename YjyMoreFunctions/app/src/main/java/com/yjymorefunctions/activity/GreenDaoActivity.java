@@ -25,6 +25,9 @@ import butterknife.OnClick;
  * http://blog.csdn.net/ghsy121/article/details/52132148  数据库增加表与更新字段语法 GREENDAO
  *
  * http://blog.csdn.net/HHcoco/article/details/52384125?locationNum=2  GreenDao Encrypt
+ *
+ *
+ *
  */
 public class GreenDaoActivity extends BaseActivity {
     @Bind(R.id.display)
@@ -92,8 +95,8 @@ public class GreenDaoActivity extends BaseActivity {
 
     private Teacher getTeacher() {
         Teacher teacher = new Teacher();
-        teacher.setSubject("数学");
-        teacher.setSalary(6000);
+        teacher.setSubject("英语");
+        teacher.setSalary(6500);
         return teacher;
     }
 

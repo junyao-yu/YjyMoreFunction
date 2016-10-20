@@ -31,6 +31,10 @@ public class DbHelper extends DaoMaster.OpenHelper {
         super(context, name, factory);
     }
 
+    @Override
+    public void onCreate(Database db) {
+        DaoMaster.createAllTables(db, true);
+    }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
