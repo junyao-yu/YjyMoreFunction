@@ -56,7 +56,11 @@
             android:layout_height="wrap_content"
             android:text="greendao"
             android:id="@+id/btn_greendao"/>
-
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="尺子"
+            android:id="@+id/btn_ruler"/>
     </LinearLayout>
 
 </ScrollView>

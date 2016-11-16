@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <declare-styleable name="RulerView">
+        <attr name="rulerBackgroundColor" format="color|reference"/>
+        <attr name="rulerScaleColor" format="color|reference"/>
+        <attr name="rulerTextColor" format="color"/>
+        <attr name="rulerMaxValue" format="float"/>
+        <attr name="rulerMinValue" format="float"/>
+        <attr name="rulerUnitValue" format="float"/>
+        <attr name="specificWidth" format="dimension|reference"/>
+        <attr name="specificHeight" format="dimension|reference"/>
+        <attr name="specificUnitDependency" format="integer"/>
+        <attr name="commonWidth" format="dimension|reference"/>
+        <attr name="commonHeight" format="dimension|reference"/>
+        <attr name="scaleIntervalDistance" format="dimension|reference"/>
+        <attr name="bDisplaySpecific" format="boolean"/>
+        <attr name="textSize" format="dimension|reference"/>
+        <attr name="textRectHeight" format="dimension|reference"/>
+    </declare-styleable>
+
+</resources>

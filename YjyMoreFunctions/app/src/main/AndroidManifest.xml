@@ -42,6 +42,8 @@
         <activity android:name=".activity.RxJavaAndroidActivity"/>
 
         <activity android:name=".activity.GreenDaoActivity"/>
+
+        <activity android:name=".activity.RulerActivity"/>
     </application>
 
 </manifest>
