@@ -4,6 +4,28 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="20dp"
+        android:id="@+id/text"
+        android:textSize="20sp"
+        android:textColor="@color/colorPrimaryDark"/>
+
+    <Button
+        android:id="@+id/button1"
+        android:layout_below="@+id/text"
+        android:text="移动到20刻度"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+    <Button
+        android:id="@+id/button2"
+        android:text="移动到30刻度"
+        android:layout_below="@+id/button1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
     <View
         android:layout_width="@dimen/dp_4"
         android:layout_height="match_parent"
@@ -11,6 +33,7 @@
         android:layout_centerHorizontal="true"/>
 
     <com.yjymorefunctions.views.RulerView
+        android:id="@+id/ruler_view"
         android:layout_width="match_parent"
         android:layout_height="100dp"
         android:layout_centerVertical="true"

@@ -8,7 +8,6 @@ import android.graphics.Paint;
 import android.support.v4.view.GestureDetectorCompat;
 import android.support.v4.view.ViewCompat;
 import android.util.AttributeSet;
-import android.util.Log;
 import android.view.GestureDetector;
 import android.view.MotionEvent;
 import android.view.View;
@@ -68,7 +67,10 @@ public class RulerView extends View implements GestureDetector.OnGestureListener
     private float rulerStartX = 0.0f;
     /**尺子总长度*/
     private float contentLengthX = 0.0f;
-
+    /**刻度改变回调*/
+    private OnValueChangeListener onValueChangeListener = null;
+    /**选中刻度位置*/
+    private int choosedScaleIndex = 0;
 
 
     private Scroller mScroller;
@@ -119,6 +121,8 @@ public class RulerView extends View implements GestureDetector.OnGestureListener
         mGestureDetectorCompat = new GestureDetectorCompat(context, this);
 
         calculateRulerCount();
+
+        setScaleIndex(0);
     }
 
     /**计算刻度总个数*/
@@ -164,6 +168,7 @@ public class RulerView extends View implements GestureDetector.OnGestureListener
         super.computeScroll();
         if(mScroller.computeScrollOffset()) {
             scrollTo(mScroller.getCurrX(), mScroller.getCurrY());
+            calculateScale();
             invalidate();
         }else {
             if(bFling) {
@@ -173,7 +178,54 @@ public class RulerView extends View implements GestureDetector.OnGestureListener
         }
     }
 
+    //归整位置
     private void adjustPosition() {
+        int scroll = getScrollX();
+        float distance = choosedScaleIndex * scaleIntervalDistance - scroll;
+        if(distance == 0) {
+            return;
+        }
+        mScroller.startScroll(scroll, 0, (int) distance, 0);
+        postInvalidate();
+    }
+
+    //计算刻度
+    /**
+     * scrollBy在原先偏移的基础上再发生偏移
+     * scrollTo每次在原始位置进行偏移
+      */
+    private void calculateScale() {
+        int offset = getScrollX();
+        int tempIndex = Math.round(offset / scaleIntervalDistance);
+        choosedScaleIndex = protectScaleIndex(tempIndex);
+        if(onValueChangeListener != null) {
+            onValueChangeListener.changeValue(this, choosedScaleIndex * rulerUnitValue);
+        }
+    }
+
+    //防止越界
+    private int protectScaleIndex(int index) {
+        int selectedIndex = index;
+        if(selectedIndex < 0) {
+            selectedIndex = 0;
+        }else if (selectedIndex > rulerCount){
+            selectedIndex = rulerCount - 1;
+        }
+        return selectedIndex;
+    }
+
+    //初始化刻度
+    public void setScaleIndex(int index) {
+        choosedScaleIndex = protectScaleIndex(index);
+        post(new Runnable() {
+            @Override
+            public void run() {
+                int moveDistance = (int) (choosedScaleIndex * scaleIntervalDistance);
+                scrollTo(moveDistance, 0);
+                calculateScale();
+                invalidate();
+            }
+        });
     }
 
     @Override
@@ -188,14 +240,54 @@ public class RulerView extends View implements GestureDetector.OnGestureListener
 
     @Override
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
-        super.onMeasure(widthMeasureSpec, heightMeasureSpec);
+        setMeasuredDimension(measureWidth(widthMeasureSpec),
+                measureHeight(heightMeasureSpec));
+    }
+
+    //测量宽度：处理MeasureSpec.UNSPECIFIED的情况
+    private int measureWidth(int widthMeasureSpec) {
+
+        int measureMode = MeasureSpec.getMode(widthMeasureSpec);
+        int measureSize = MeasureSpec.getSize(widthMeasureSpec);
+
+        //View的最小值与背景最小值两者中的最大值（宽度）
+        int result = getSuggestedMinimumWidth();
+        switch (measureMode) {
+            case MeasureSpec.AT_MOST:
+            case MeasureSpec.EXACTLY:
+                result = measureSize;
+                break;
+            default:
+                break;
+        }
+        return result;
+    }
+
+    //测量高度
+    private int measureHeight(int heightMeasure) {
+        int measureMode = MeasureSpec.getMode(heightMeasure);
+        int measureSize = MeasureSpec.getSize(heightMeasure);
+        int result  = (int) (textSize) * 4;
+        switch (measureMode) {
+            //设置了确切的高度
+            case MeasureSpec.EXACTLY:
+                result = Math.max(result, measureSize);
+                break;
+            //没有设置了确切的高度
+            case MeasureSpec.AT_MOST:
+                result = Math.min(result, measureSize);
+                break;
+            default:
+                break;
+        }
+        return result;
     }
 
     @Override
     protected void onSizeChanged(int w, int h, int oldw, int oldh) {
         super.onSizeChanged(w, h, oldw, oldh);
         if(w != oldw || h != oldh) {
-            rulerStartX = w / 2;
+            rulerStartX = w / 2.0f;
             contentLengthX = (rulerMaxValue - rulerMinValue) / rulerUnitValue * scaleIntervalDistance;
         }
     }
@@ -237,6 +329,7 @@ public class RulerView extends View implements GestureDetector.OnGestureListener
 
         scrollBy((int) distance, 0);
 
+        calculateScale();
         return true;
     }
 
@@ -253,19 +346,29 @@ public class RulerView extends View implements GestureDetector.OnGestureListener
         if (scroll < rulerStartX - contentLengthX || scroll > contentLengthX + rulerStartX) {
             return false;
         }
-        Log.e(TAG, "onFling--->" + scroll);
 
         bFling = true;
 
-        flingAction((int) -velocity / 2, (int) scroll);
+        flingAction((int) -velocity / 2);
 
         return true;
     }
 
 
-    private void flingAction(int velocity, int scroll) {
-        mScroller.fling(scroll, 0, velocity, 0,  (int) (rulerStartX - contentLengthX), (int) (contentLengthX + rulerStartX), 0, 0);
 
+    private void flingAction(int velocity) {
+        //minX 能够滚动的最小距离
+        //maxX 能够滚动的最大距离
+        mScroller.fling(getScrollX(), 0, velocity, 0,  0, (int) contentLengthX, 0, 0);
         ViewCompat.postInvalidateOnAnimation(this);
     }
+
+    public interface OnValueChangeListener {
+        void changeValue(RulerView rulerView, float value);
+    }
+
+    public void setOnValueChangeListener(OnValueChangeListener listener) {
+        onValueChangeListener = listener;
+    }
+
 }
