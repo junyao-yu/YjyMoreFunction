@@ -33,6 +33,8 @@ public class MainActivity extends BaseActivity {
         titleView.setLeftImg(R.drawable.tip_no_news_icon);
         titleView.setLeftTip("消息");
         EventBus.getDefault().register(this);
+
+        int[] arr  = bubbleSort(array);
     }
 
     @Subscribe(threadMode = ThreadMode.MainThread)
@@ -48,7 +50,7 @@ public class MainActivity extends BaseActivity {
 
 
     @OnClick({R.id.btn_share_preference, R.id.btn_http, R.id.btn_upanddown, R.id.btn_loader_image, R.id.btn_touch_event, R.id.btn_fragment
-    ,R.id.btn_vertical_scroll, R.id.btn_storage_in_app, R.id.btn_rxjava_android, R.id.btn_greendao, R.id.btn_ruler})
+    ,R.id.btn_vertical_scroll, R.id.btn_storage_in_app, R.id.btn_rxjava_android, R.id.btn_greendao, R.id.btn_ruler, R.id.btn_behaviour})
     @Override
     public void onClickView(View view) {
         switch (view.getId()) {
@@ -85,11 +87,31 @@ public class MainActivity extends BaseActivity {
             case R.id.btn_ruler:
                 startActivity(new Intent(MainActivity.this, RulerActivity.class));
                 break;
+            case R.id.btn_behaviour:
+                startActivity(new Intent(MainActivity.this, BehaviourActivity.class));
+                break;
         }
     }
 
     @Override
     protected int getLayoutResId() {
         return R.layout.activity_main;
+    }
+
+
+    private int[] array = {95, 45, 15, 78, 84, 51, 24, 12};
+
+    private int[] bubbleSort(int[] array) {
+        int temp = 0;
+        for(int i = array.length - 1;i > 0;i--) {
+            for(int j = 0;j < i;j++) {
+                if(array[j + 1] < array[j]) {
+                    temp = array[j];
+                    array[j] = array[j + 1];
+                    array[j + 1] = temp;
+                }
+            }
+        }
+        return array;
     }
 }

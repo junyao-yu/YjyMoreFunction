@@ -44,6 +44,8 @@
         <activity android:name=".activity.GreenDaoActivity"/>
 
         <activity android:name=".activity.RulerActivity"/>
+
+        <activity android:name=".activity.BehaviourActivity"/>
     </application>
 
 </manifest>
