@@ -2,10 +2,14 @@ package com.yjymorefunctions.activity;
 
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.graphics.Color;
+import android.graphics.drawable.GradientDrawable;
 import android.os.Bundle;
 import android.os.Environment;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.squareup.picasso.Picasso;
 import com.squareup.picasso.Transformation;
@@ -26,6 +30,8 @@ import butterknife.Bind;
 public class ImageActivity extends BaseActivity {
     @Bind(R.id.image)
     ImageView image;
+    @Bind(R.id.text)
+    TextView text;
 
     @Override
     protected void onInitParams(Intent intent) {
@@ -63,6 +69,37 @@ public class ImageActivity extends BaseActivity {
         String b = "我们今晚去吃鱼/你/你好/你真好/你真真好/你真真真好";
         b = b.replaceAll(regexEmotion, "$1.png");
         System.out.println(b);
+
+        text.setText("纯代码写的框");
+        GradientDrawable drawable = new GradientDrawable();
+        drawable.setCornerRadius((int) getResources().getDimension(R.dimen.dp_5));
+        drawable.setStroke((int) getResources().getDimension(R.dimen.dp_1), Color.parseColor("#cccccc"));
+        drawable.setColor(Color.parseColor("#eeeeee"));
+        text.setBackgroundDrawable(drawable);
+        text.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                switch (event.getAction()) {
+                    case MotionEvent.ACTION_DOWN: {
+                        GradientDrawable drawable = new GradientDrawable();
+                        drawable.setCornerRadius((int) getResources().getDimension(R.dimen.dp_5));
+                        drawable.setStroke((int) getResources().getDimension(R.dimen.dp_1), Color.parseColor("#aa0000"));
+                        drawable.setColor(Color.parseColor("#00aa00"));
+                        text.setBackgroundDrawable(drawable);
+                        break;
+                    }
+                    case MotionEvent.ACTION_UP: {
+                            GradientDrawable drawable = new GradientDrawable();
+                            drawable.setCornerRadius((int) getResources().getDimension(R.dimen.dp_5));
+                            drawable.setStroke((int) getResources().getDimension(R.dimen.dp_1), Color.parseColor("#cccccc"));
+                            drawable.setColor(Color.parseColor("#eeeeee"));
+                            text.setBackgroundDrawable(drawable);
+                            break;
+                        }
+                }
+                return true;
+            }
+        });
     }
 
     public static String getStoragePath() {
