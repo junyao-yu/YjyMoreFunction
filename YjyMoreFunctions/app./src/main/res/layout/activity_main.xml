@@ -66,6 +66,11 @@
             android:layout_height="wrap_content"
             android:text="5.0 滑动效果"
             android:id="@+id/btn_behaviour"/>
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="渐变色"
+            android:id="@+id/btn_gradient"/>
     </LinearLayout>
 
 </ScrollView>

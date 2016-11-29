@@ -46,6 +46,8 @@
         <activity android:name=".activity.RulerActivity"/>
 
         <activity android:name=".activity.BehaviourActivity"/>
+
+        <activity android:name=".activity.GradientActivity"/>
     </application>
 
 </manifest>
