@@ -71,6 +71,11 @@
             android:layout_height="wrap_content"
             android:text="渐变色"
             android:id="@+id/btn_gradient"/>
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="时光轴"
+            android:id="@+id/btn_sgz"/>
     </LinearLayout>
 
 </ScrollView>
