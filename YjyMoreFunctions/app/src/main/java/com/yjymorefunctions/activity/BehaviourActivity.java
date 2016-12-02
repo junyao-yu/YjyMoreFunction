@@ -2,6 +2,8 @@ package com.yjymorefunctions.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.support.design.widget.Snackbar;
 import android.util.Log;
 import android.view.View;
@@ -16,6 +18,13 @@ import com.yjymorefunctions.base.BaseActivity;
  */
 
 public class BehaviourActivity extends BaseActivity {
+
+    private Handler handler = new Handler(){
+        @Override
+        public void handleMessage(Message msg) {
+            super.handleMessage(msg);
+        }
+    };
     @Override
     protected void onInitParams(Intent intent) {
 
@@ -35,6 +44,12 @@ public class BehaviourActivity extends BaseActivity {
                 }).show();
             }
         });
+        handler.sendMessage(new Message());
+        /**
+         * 注：产生一个Message对象，可以new  ，也可以使用Message.obtain()方法；两者都可以，
+         * 但是更建议使用obtain方法，因为Message内部维护了一个Message池用于Message的复用，避免使用new 重新分配内存。
+         */
+        handler.obtainMessage();
     }
 
     @Override

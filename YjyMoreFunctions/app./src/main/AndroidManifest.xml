@@ -50,6 +50,8 @@
         <activity android:name=".activity.GradientActivity"/>
 
         <activity android:name=".activity.SgzActivity"/>
+
+        <activity android:name=".activity.ThreadPoolActivity"/>
     </application>
 
 </manifest>
