@@ -7,6 +7,7 @@ import android.os.Message;
 import android.support.design.widget.Snackbar;
 import android.util.Log;
 import android.view.View;
+import android.widget.Toast;
 
 import com.yjymorefunctions.R;
 import com.yjymorefunctions.base.BaseActivity;
@@ -23,6 +24,7 @@ public class BehaviourActivity extends BaseActivity {
         @Override
         public void handleMessage(Message msg) {
             super.handleMessage(msg);
+            Log.e("------>", (String) msg.obj);
         }
     };
     @Override
@@ -44,12 +46,17 @@ public class BehaviourActivity extends BaseActivity {
                 }).show();
             }
         });
-        handler.sendMessage(new Message());
         /**
          * 注：产生一个Message对象，可以new  ，也可以使用Message.obtain()方法；两者都可以，
          * 但是更建议使用obtain方法，因为Message内部维护了一个Message池用于Message的复用，避免使用new 重新分配内存。
          */
-        handler.obtainMessage();
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                Toast.makeText(BehaviourActivity.this, "延时", Toast.LENGTH_SHORT).show();
+            }
+        }, 5000);
+        handler.sendMessage(handler.obtainMessage(0, "不延时"));
     }
 
     @Override
