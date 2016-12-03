@@ -81,6 +81,11 @@
             android:layout_height="wrap_content"
             android:text="线程池"
             android:id="@+id/btn_thread_pool"/>
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="DialogFragment创建对话框"
+            android:id="@+id/btn_dialog_fragment"/>
     </LinearLayout>
 
 </ScrollView>
