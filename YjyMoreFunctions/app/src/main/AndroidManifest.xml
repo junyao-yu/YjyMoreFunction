@@ -54,6 +54,8 @@
         <activity android:name=".activity.ThreadPoolActivity"/>
 
         <activity android:name=".activity.DisplayDialogFragment"/>
+        
+        <activity android:name=".activity.ScrollerActivity"/>
     </application>
 
 </manifest>
