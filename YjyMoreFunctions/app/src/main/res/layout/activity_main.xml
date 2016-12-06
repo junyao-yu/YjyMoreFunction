@@ -91,6 +91,11 @@
             android:layout_height="wrap_content"
             android:text="Scroller回弹效果"
             android:id="@+id/btn_sroller"/>
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Window系统级弹框"
+            android:id="@+id/btn_window"/>
     </LinearLayout>
 
 </ScrollView>
