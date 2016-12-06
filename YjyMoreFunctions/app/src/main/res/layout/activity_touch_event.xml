@@ -6,7 +6,10 @@
     <com.yjymorefunctions.views.MyLinearLayout
         android:id="@+id/outer_ll"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true">
         <com.yjymorefunctions.views.MyView
             android:id="@+id/inner_view"
             android:layout_width="500px"
