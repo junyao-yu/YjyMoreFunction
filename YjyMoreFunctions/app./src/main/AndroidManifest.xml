@@ -59,6 +59,8 @@
         <activity android:name=".activity.ScrollerActivity"/>
 
         <activity android:name=".activity.WindowActivity"/>
+
+        <activity android:name=".activity.DrawActivity"/>
     </application>
 
 </manifest>

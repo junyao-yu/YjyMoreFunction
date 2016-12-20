@@ -96,6 +96,11 @@
             android:layout_height="wrap_content"
             android:text="Window系统级弹框"
             android:id="@+id/btn_window"/>
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="画View"
+            android:id="@+id/btn_draw"/>
     </LinearLayout>
 
 </ScrollView>
