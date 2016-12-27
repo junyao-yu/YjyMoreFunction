@@ -15,12 +15,37 @@
         android:supportsRtl="true"
         android:name=".base.BaseApplication"
         android:theme="@style/AppTheme">
-        <activity android:name=".activity.MainActivity">
+        <activity android:name=".activity.MainActivity"
+            android:enabled="false">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
+
+        <activity-alias
+            android:name=".activity.Test1"
+            android:targetActivity=".activity.MainActivity"
+            android:icon="@mipmap/ic_launcher_temp"
+            android:label="测试icon"
+            android:enabled="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity-alias>
+
+        <activity-alias
+            android:name=".activity.Test2"
+            android:targetActivity=".activity.MainActivity"
+            android:icon="@mipmap/ic_launcher"
+            android:label="哈哈"
+            android:enabled="false">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity-alias>
 
         <activity android:name=".activity.SharePreferenceActivity"/>
 

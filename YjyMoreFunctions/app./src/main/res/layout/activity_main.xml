@@ -101,6 +101,16 @@
             android:layout_height="wrap_content"
             android:text="画View"
             android:id="@+id/btn_draw"/>
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="替换ICON"
+            android:id="@+id/btn_replace_icon"/>
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="替换ICONTemp"
+            android:id="@+id/btn_replace_icon_temp"/>
     </LinearLayout>
 
 </ScrollView>

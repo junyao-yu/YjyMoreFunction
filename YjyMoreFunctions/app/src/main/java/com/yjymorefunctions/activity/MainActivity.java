@@ -1,6 +1,8 @@
 package com.yjymorefunctions.activity;
 
+import android.content.ComponentName;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Toast;
@@ -20,6 +22,10 @@ import de.greenrobot.event.ThreadMode;
  */
 public class MainActivity extends BaseActivity {
 
+    private ComponentName mDefault;
+    private ComponentName mDouble1Temp;
+    private ComponentName mDouble1Back;
+    private PackageManager mPm;
 
     @Override
     protected void onInitParams(Intent intent) {
@@ -35,6 +41,11 @@ public class MainActivity extends BaseActivity {
         EventBus.getDefault().register(this);
 
         int[] arr  = bubbleSort(array);
+
+        mDefault = getComponentName();
+        mDouble1Temp = new ComponentName(getBaseContext(), "com.yjymorefunctions.activity.Test1");
+        mDouble1Back = new ComponentName(getBaseContext(), "com.yjymorefunctions.activity.Test2");
+        mPm = getApplicationContext().getPackageManager();
     }
 
     @Subscribe(threadMode = ThreadMode.MainThread)
@@ -51,7 +62,8 @@ public class MainActivity extends BaseActivity {
 
     @OnClick({R.id.btn_share_preference, R.id.btn_http, R.id.btn_upanddown, R.id.btn_loader_image, R.id.btn_touch_event, R.id.btn_fragment
     ,R.id.btn_vertical_scroll, R.id.btn_storage_in_app, R.id.btn_rxjava_android, R.id.btn_greendao, R.id.btn_ruler, R.id.btn_behaviour
-    ,R.id.btn_gradient, R.id.btn_sgz, R.id.btn_thread_pool, R.id.btn_dialog_fragment, R.id.btn_sroller, R.id.btn_window, R.id.btn_draw})
+    ,R.id.btn_gradient, R.id.btn_sgz, R.id.btn_thread_pool, R.id.btn_dialog_fragment, R.id.btn_sroller, R.id.btn_window, R.id.btn_draw
+    ,R.id.btn_replace_icon, R.id.btn_replace_icon_temp})
     @Override
     public void onClickView(View view) {
         switch (view.getId()) {
@@ -112,7 +124,37 @@ public class MainActivity extends BaseActivity {
             case R.id.btn_draw:
                 startActivity(new Intent(MainActivity.this, DrawActivity.class));
                 break;
+            case R.id.btn_replace_icon:
+                change1Icon();
+                break;
+            case R.id.btn_replace_icon_temp:
+                change2Icon();
+                break;
         }
+    }
+
+    private void change1Icon() {
+        disableComponent(mDefault);
+        disableComponent(mDouble1Back);
+        enableComponent(mDouble1Temp);
+    }
+
+    private void change2Icon() {
+        disableComponent(mDefault);
+        disableComponent(mDouble1Temp);
+        enableComponent(mDouble1Back);
+    }
+
+    private void enableComponent(ComponentName componentName) {
+        mPm.setComponentEnabledSetting(componentName,
+                PackageManager.COMPONENT_ENABLED_STATE_ENABLED,
+                PackageManager.DONT_KILL_APP);
+    }
+
+    private void disableComponent(ComponentName componentName) {
+        mPm.setComponentEnabledSetting(componentName,
+                PackageManager.COMPONENT_ENABLED_STATE_DISABLED,
+                PackageManager.DONT_KILL_APP);
     }
 
     @Override
