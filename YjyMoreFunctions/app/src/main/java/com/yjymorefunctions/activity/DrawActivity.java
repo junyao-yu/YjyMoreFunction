@@ -2,6 +2,7 @@ package com.yjymorefunctions.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.View;
 
 import com.yjymorefunctions.R;
@@ -21,7 +22,13 @@ public class DrawActivity extends BaseActivity {
 
     @Override
     protected void setupViews(Bundle savedInstanceState) {
-
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                setResult(100);
+                finish();
+            }
+        }, 5_000);
     }
 
     @Override

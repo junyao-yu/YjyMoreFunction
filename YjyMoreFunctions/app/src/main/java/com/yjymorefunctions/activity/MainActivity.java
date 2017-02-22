@@ -4,6 +4,7 @@ import android.content.ComponentName;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
@@ -122,7 +123,8 @@ public class MainActivity extends BaseActivity {
                 startActivity(new Intent(MainActivity.this, WindowActivity.class));
                 break;
             case R.id.btn_draw:
-                startActivity(new Intent(MainActivity.this, DrawActivity.class));
+//                startActivity(new Intent(MainActivity.this, DrawActivity.class));
+                startActivityForResult(new Intent(MainActivity.this, DrawActivity.class), 22);
                 break;
             case R.id.btn_replace_icon:
                 change1Icon();
@@ -177,5 +179,12 @@ public class MainActivity extends BaseActivity {
             }
         }
         return array;
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        Log.e("requestCode--->", requestCode + "");
+        Log.e("resultCode--->", resultCode + "");
     }
 }
