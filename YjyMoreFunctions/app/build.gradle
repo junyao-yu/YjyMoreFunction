@@ -22,7 +22,18 @@ android {
         schemaVersion 14
         targetGenDir 'src/main/java'
     }
+
+    productFlavors {
+        m360{}
+        xiaomi{
+            applicationIdSuffix ".xiaomi"
+        }
+    }
+
 }
+
+
+
 
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])

@@ -27,8 +27,12 @@ public class NewsFragment extends BaseFragment {
     // 标志位，标志已经初始化完成。
     private boolean isPrepared;
 
-    public NewsFragment(String titleStr) {
-        this.titleStr = titleStr;
+    public static BaseFragment createFragment(String titleStr) {
+        NewsFragment newsFragment = new NewsFragment();
+        Bundle bundle = new Bundle();
+        bundle.putString("title", titleStr);
+        newsFragment.setArguments(bundle);
+        return newsFragment;
     }
 
     @Nullable
@@ -42,6 +46,11 @@ public class NewsFragment extends BaseFragment {
         return view;
     }
 
+    @Override
+    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        titleStr = getArguments().getString("title");
+    }
 
     @Override
     public void onDestroyView() {

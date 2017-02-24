@@ -16,7 +16,7 @@
         android:name=".base.BaseApplication"
         android:theme="@style/AppTheme">
         <activity android:name=".activity.MainActivity"
-            android:enabled="false">
+            android:enabled="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
                 <category android:name="android.intent.category.LAUNCHER"/>
@@ -28,7 +28,7 @@
             android:targetActivity=".activity.MainActivity"
             android:icon="@mipmap/ic_launcher_temp"
             android:label="测试icon"
-            android:enabled="true">
+            android:enabled="false">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
                 <category android:name="android.intent.category.LAUNCHER"/>

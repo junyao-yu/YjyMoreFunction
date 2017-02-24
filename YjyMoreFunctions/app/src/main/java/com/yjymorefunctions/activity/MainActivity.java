@@ -47,6 +47,8 @@ public class MainActivity extends BaseActivity {
         mDouble1Temp = new ComponentName(getBaseContext(), "com.yjymorefunctions.activity.Test1");
         mDouble1Back = new ComponentName(getBaseContext(), "com.yjymorefunctions.activity.Test2");
         mPm = getApplicationContext().getPackageManager();
+
+        Toast.makeText(this, getPackageName(), Toast.LENGTH_SHORT).show();
     }
 
     @Subscribe(threadMode = ThreadMode.MainThread)

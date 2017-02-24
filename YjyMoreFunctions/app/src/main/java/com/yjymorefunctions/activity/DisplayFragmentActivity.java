@@ -54,7 +54,7 @@ public class DisplayFragmentActivity extends BaseActivity {
         viewPager.setOffscreenPageLimit(1);
         viewPager.addOnPageChangeListener(new OnPageChangeListenerImp());
         for (int i=0;i<array.length;i++) {
-            fragments.add(new NewsFragment(array[i]));
+            fragments.add(NewsFragment.createFragment(array[i]));
 
             TabLayout.Tab tab = tabLayout.newTab().setText(array[i]);
             tabLayout.addTab(tab);
