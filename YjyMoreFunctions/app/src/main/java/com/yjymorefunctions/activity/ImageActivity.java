@@ -49,7 +49,8 @@ public class ImageActivity extends BaseActivity {
 
         //picasso可以对多个加载请求设置相同的tag
         Picasso.with(this)
-                .load("http://f.hiphotos.baidu.com/zhidao/pic/item/a8ec8a13632762d0aac65c45a2ec08fa503dc654.jpg")
+//                .load("http://f.hiphotos.baidu.com/zhidao/pic/item/a8ec8a13632762d0aac65c45a2ec08fa503dc654.jpg")
+                .load("https://ylb-next-public.oss-cn-qingdao.aliyuncs.com/2y10fRWPI394ERDRLOm5qoaUH1Rj85k6cXMl1I9W2VBg2QlVqKlPz6.png")
                 .transform(transformation)//可以自定义图片显示的大小
                 .config(Bitmap.Config.RGB_565)//比ARGB_8888图片内存占用少一半
                 .tag(this)

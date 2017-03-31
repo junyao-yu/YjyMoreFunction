@@ -4,7 +4,15 @@ import android.app.Activity;
 import android.app.Application;
 import android.os.Bundle;
 
+import com.improve.utility.http.HttpsClient;
 import com.improve.utility.utils.LogUtil;
+import com.jakewharton.picasso.OkHttp3Downloader;
+import com.squareup.picasso.Picasso;
+
+import java.util.Collections;
+
+import okhttp3.OkHttpClient;
+import okhttp3.Protocol;
 
 /**
  * Auth：yujunyao
@@ -16,6 +24,10 @@ public class BaseApplication extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
+
+        Picasso picasso = new Picasso.Builder(this).downloader(new OkHttp3Downloader(HttpsClient.getHttps())).build();
+        Picasso.setSingletonInstance(picasso);
+
         registerActivityLifecycleCallbacks(new ActivityLifecycleCallbacksImp());
     }
 
