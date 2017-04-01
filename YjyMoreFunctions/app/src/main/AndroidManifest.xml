@@ -86,6 +86,8 @@
         <activity android:name=".activity.WindowActivity"/>
 
         <activity android:name=".activity.DrawActivity"/>
+
+        <activity android:name=".activity.Draw2Activity"/>
     </application>
 
 </manifest>

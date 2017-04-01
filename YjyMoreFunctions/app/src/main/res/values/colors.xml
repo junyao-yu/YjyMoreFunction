@@ -7,4 +7,10 @@
     <color name="warmGrey">#828282</color>
     <color name="color_c16">#38404b</color>
     <color name="color_ffb400">#ffb400</color>
+
+    <color name="color_66e8fe">#66e8fe</color>
+    <color name="color_ffac00">#ffac00</color>
+    <color name="color_cbff00">#cbff00</color>
+    <color name="color_00fcfb">#00fcfb</color>
+    <color name="color_00000000">#00000000</color>
 </resources>
