@@ -88,6 +88,8 @@
         <activity android:name=".activity.DrawActivity"/>
 
         <activity android:name=".activity.Draw2Activity"/>
+
+        <activity android:name=".activity.RefreshViewActivity"/>
     </application>
 
 </manifest>

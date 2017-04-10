@@ -116,6 +116,11 @@
             android:layout_height="wrap_content"
             android:text="画draw2"
             android:id="@+id/btn_draw2"/>
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="列表刷新"
+            android:id="@+id/btn_refresh"/>
     </LinearLayout>
 
 </ScrollView>
