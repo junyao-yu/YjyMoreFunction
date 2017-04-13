@@ -36,7 +36,7 @@ android {
 
 
 dependencies {
-    compile fileTree(dir: 'libs', include: ['*.jar'])
+    compile fileTree(include: ['*.jar'], dir: 'libs')
     testCompile 'junit:junit:4.12'
     compile 'com.android.support:appcompat-v7:22.1.1'
     compile 'com.android.support:palette-v7:22.1.1'
@@ -50,7 +50,8 @@ dependencies {
     compile 'org.greenrobot:greendao:3.0.1'
     compile 'com.google.code.gson:gson:2.2.4'
     compile 'com.jakewharton.picasso:picasso2-okhttp3-downloader:1.1.0'
-//    compile 'org.greenrobot:greendao-generator:3.0.0'
-//    compile 'net.zetetic:android-database-sqlcipher:3.5.2'
-//    compile 'org.greenrobot:greendao-encryption:2.2.2'
+    //    compile 'org.greenrobot:greendao-generator:3.0.0'
+    //    compile 'net.zetetic:android-database-sqlcipher:3.5.2'
+    //    compile 'org.greenrobot:greendao-encryption:2.2.2'
+    compile files('libs/jsoup-1.8.1.jar')
 }

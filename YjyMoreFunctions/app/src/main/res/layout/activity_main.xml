@@ -121,6 +121,11 @@
             android:layout_height="wrap_content"
             android:text="列表刷新"
             android:id="@+id/btn_refresh"/>
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="测试webview监听h5输入框内容"
+            android:id="@+id/btn_webview"/>
     </LinearLayout>
 
 </ScrollView>
