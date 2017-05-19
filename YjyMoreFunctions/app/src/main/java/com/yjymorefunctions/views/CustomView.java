@@ -6,7 +6,7 @@ import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Path;
 import android.util.AttributeSet;
-import android.view.MotionEvent;
+import android.util.Log;
 import android.view.View;
 
 /**
@@ -41,6 +41,7 @@ public class CustomView extends View {
     private void init() {
         mPaint.setStyle(Paint.Style.STROKE);
         mPaint.setColor(Color.GREEN);
+        mPaint.setStyle(Paint.Style.FILL);
         mPaint.setStrokeWidth(5);
 
         mWritePaint.setStyle(Paint.Style.STROKE);
@@ -49,44 +50,113 @@ public class CustomView extends View {
     }
 
     @Override
+    protected void onAttachedToWindow() {
+        super.onAttachedToWindow();
+        Log.e("xxxxx--->", "onAttachedToWindow");
+    }
+
+    @Override
+    public void onWindowFocusChanged(boolean hasWindowFocus) {
+        super.onWindowFocusChanged(hasWindowFocus);
+        Log.e("xxxxx--->", "onWindowFocusChanged");
+    }
+
+    @Override
+    protected void onDetachedFromWindow() {
+        super.onDetachedFromWindow();
+        Log.e("xxxxx--->", "onDetachedFromWindow");
+    }
+
+    private int allWidth = 0;
+
+    @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
+        Log.e("xxxxx--->", "onDraw");
+        allWidth = getWidth() * 3 / 2;
         drawBezier(canvas);
 
-        drawWrite(canvas);
+//        drawWrite(canvas);
     }
 
     private void drawBezier(Canvas canvas) {
         Path mPath = new Path();
-        mPath.moveTo(140, 400);
-        mPath.quadTo(340, 100, 540, 400);
-        mPath.quadTo(740, 700, 940, 400);
+        mPath.moveTo(-startX, getHeight());
+        mPath.lineTo(-startX, getHeight() - 200);
+        mPath.quadTo(allWidth / 4 - startX, getHeight() - 350, allWidth / 2 - startX, getHeight() - 200);
+        mPath.quadTo(allWidth * 3 / 4 - startX, getHeight() - 50, allWidth - startX, getHeight() - 200);
+        mPath.lineTo(allWidth - startX, getHeight());
         canvas.drawPath(mPath, mPaint);
     }
 
-    private void drawWrite(Canvas canvas) {
-        canvas.drawPath(mWritePath, mWritePaint);
+    private int startX = 0;
+
+    public void startAnim(){
+//        ValueAnimator animator = ValueAnimator.ofInt(0,allWidth - getWidth());
+//        animator.setDuration(2000);
+//        animator.setRepeatCount(ValueAnimator.INFINITE);
+//        animator.setInterpolator(new LinearInterpolator());
+//        animator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
+//            @Override
+//            public void onAnimationUpdate(ValueAnimator animation) {
+//
+//                startX = (int)animation.getAnimatedValue();
+//                Log.e("xxxxx---->", startX + "");
+//                postInvalidate();
+//            }
+//        });
+//        animator.start();
+        post(new AnimateRunnable());
     }
 
-    @Override
-    public boolean onTouchEvent(MotionEvent event) {
-        switch (event.getAction()) {
-            case MotionEvent.ACTION_DOWN:
-                preX = event.getX();
-                preY = event.getY();
-                mWritePath.moveTo(preX, preY);
-                return true;
-            case MotionEvent.ACTION_MOVE:
-                float endX = (event.getX() + preX) / 2;
-                float endY = (event.getY() + preY) / 2;
-                mWritePath.quadTo(preX, preY, endX, endY);
-                preX = event.getX();
-                preY = event.getY();
-                invalidate();
-                break;
-            default:
-                break;
+    private boolean bolang1Flag = true;
+
+    private class AnimateRunnable implements Runnable {
+
+        @Override
+        public void run() {
+            if (startX <= 0) {
+                startX += 5;
+                bolang1Flag = true;
+            } else if (startX >= allWidth - getWidth()) {
+                startX -= 5;
+                bolang1Flag = false;
+            } else {
+                if (bolang1Flag) {
+                    startX += 5;
+                } else {
+                    startX -= 5;
+                }
+            }
+            postInvalidate();
+            postDelayed(this, 50);
         }
-        return super.onTouchEvent(event);
     }
+
+
+//    private void drawWrite(Canvas canvas) {
+//        canvas.drawPath(mWritePath, mWritePaint);
+//    }
+
+//    @Override
+//    public boolean onTouchEvent(MotionEvent event) {
+//        switch (event.getAction()) {
+//            case MotionEvent.ACTION_DOWN:
+//                preX = event.getX();
+//                preY = event.getY();
+//                mWritePath.moveTo(preX, preY);
+//                return true;
+//            case MotionEvent.ACTION_MOVE:
+//                float endX = (event.getX() + preX) / 2;
+//                float endY = (event.getY() + preY) / 2;
+//                mWritePath.quadTo(preX, preY, endX, endY);
+//                preX = event.getX();
+//                preY = event.getY();
+//                invalidate();
+//                break;
+//            default:
+//                break;
+//        }
+//        return super.onTouchEvent(event);
+//    }
 }

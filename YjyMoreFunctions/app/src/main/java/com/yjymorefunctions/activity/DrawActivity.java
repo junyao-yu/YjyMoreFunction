@@ -2,11 +2,13 @@ package com.yjymorefunctions.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.Handler;
 import android.view.View;
 
 import com.yjymorefunctions.R;
 import com.yjymorefunctions.base.BaseActivity;
+import com.yjymorefunctions.views.CustomView;
+
+import butterknife.Bind;
 
 /**
  * Auth：yujunyao
@@ -15,6 +17,9 @@ import com.yjymorefunctions.base.BaseActivity;
  */
 
 public class DrawActivity extends BaseActivity {
+    @Bind(R.id.custom_view)
+    CustomView customView;
+
     @Override
     protected void onInitParams(Intent intent) {
 
@@ -22,13 +27,14 @@ public class DrawActivity extends BaseActivity {
 
     @Override
     protected void setupViews(Bundle savedInstanceState) {
-        new Handler().postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                setResult(100);
-                finish();
-            }
-        }, 5_000);
+//        new Handler().postDelayed(new Runnable() {
+//            @Override
+//            public void run() {
+//                setResult(100);
+//                finish();
+//            }
+//        }, 5_000);
+        customView.startAnim();
     }
 
     @Override
@@ -40,4 +46,5 @@ public class DrawActivity extends BaseActivity {
     protected int getLayoutResId() {
         return R.layout.activity_draw;
     }
+
 }
