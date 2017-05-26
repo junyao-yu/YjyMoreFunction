@@ -92,6 +92,8 @@
         <activity android:name=".activity.RefreshViewActivity"/>
 
         <activity android:name=".activity.WebActivity"/>
+
+        <activity android:name=".activity.Draw3Activity"/>
     </application>
 
 </manifest>
