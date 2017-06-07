@@ -27,7 +27,7 @@ public class BaseApplication extends Application {
     public void onCreate() {
         super.onCreate();
 
-        //解决picasso加载某些https图片加载不出来
+        //解决picasso加载某些https图片加载不出来，这里只要实力化能加载https的client网络请求就可以了。
         OkHttpClient client = new OkHttpClient.Builder()
                 .protocols(Collections.singletonList(Protocol.HTTP_1_1))
                 .cache(new Cache(new File(getStoragePath()), 50 * 1024 * 1024))//设置缓存路径
