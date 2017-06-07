@@ -36,7 +36,7 @@ public class BaseApplication extends Application {
 
         Picasso picasso = new Picasso.Builder(this).downloader(new OkHttp3Downloader(client)).build();
 //        Picasso picasso = new Picasso.Builder(this).downloader(new OkHttp3Downloader(new File(getStoragePath()), 50 * 1024 * 1024)).build();
-        Picasso.setSingletonInstance(picasso);
+//        Picasso.setSingletonInstance(picasso);
 
         registerActivityLifecycleCallbacks(new ActivityLifecycleCallbacksImp());
     }
