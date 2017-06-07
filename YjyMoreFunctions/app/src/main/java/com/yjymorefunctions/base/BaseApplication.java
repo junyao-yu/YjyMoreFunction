@@ -3,14 +3,16 @@ package com.yjymorefunctions.base;
 import android.app.Activity;
 import android.app.Application;
 import android.os.Bundle;
+import android.os.Environment;
 
-import com.improve.utility.http.HttpsClient;
 import com.improve.utility.utils.LogUtil;
 import com.jakewharton.picasso.OkHttp3Downloader;
 import com.squareup.picasso.Picasso;
 
+import java.io.File;
 import java.util.Collections;
 
+import okhttp3.Cache;
 import okhttp3.OkHttpClient;
 import okhttp3.Protocol;
 
@@ -25,10 +27,32 @@ public class BaseApplication extends Application {
     public void onCreate() {
         super.onCreate();
 
-        Picasso picasso = new Picasso.Builder(this).downloader(new OkHttp3Downloader(HttpsClient.getHttps())).build();
+        //解决picasso加载某些https图片加载不出来
+        OkHttpClient client = new OkHttpClient.Builder()
+                .protocols(Collections.singletonList(Protocol.HTTP_1_1))
+                .cache(new Cache(new File(getStoragePath()), 50 * 1024 * 1024))//设置缓存路径
+                .build();
+
+
+        Picasso picasso = new Picasso.Builder(this).downloader(new OkHttp3Downloader(client)).build();
+//        Picasso picasso = new Picasso.Builder(this).downloader(new OkHttp3Downloader(new File(getStoragePath()), 50 * 1024 * 1024)).build();
         Picasso.setSingletonInstance(picasso);
 
         registerActivityLifecycleCallbacks(new ActivityLifecycleCallbacksImp());
+    }
+
+    public static String getStoragePath() {
+        String storagePath = "";
+        boolean sdCardExist = Environment.getExternalStorageState().equals(
+                android.os.Environment.MEDIA_MOUNTED);
+        if(sdCardExist) {
+            storagePath = Environment.getExternalStorageDirectory().getAbsolutePath() +File.separator+ "aaaaa";
+            File file = new File(storagePath);
+            if (!file.exists()) {
+                file.mkdirs();
+            }
+        }
+        return storagePath;
     }
 
     private class ActivityLifecycleCallbacksImp implements ActivityLifecycleCallbacks {

@@ -5,7 +5,6 @@ import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.graphics.drawable.GradientDrawable;
 import android.os.Bundle;
-import android.os.Environment;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.ImageView;
@@ -15,8 +14,6 @@ import com.squareup.picasso.Picasso;
 import com.squareup.picasso.Transformation;
 import com.yjymorefunctions.R;
 import com.yjymorefunctions.base.BaseActivity;
-
-import java.io.File;
 
 import butterknife.Bind;
 
@@ -43,22 +40,27 @@ public class ImageActivity extends BaseActivity {
 //        setContentView(R.layout.activity_image);
 //        ButterKnife.bind(this);
 
-//        Picasso picasso = new Picasso.Builder(this).downloader(new OkHttpDownloader(new File(getStoragePath()))).build();
-//Picasso.setSingletonInstance(picasso);
-//
+//        Picasso picasso = new Picasso.Builder(this).downloader(new OkHttp3Downloader(new File(getStoragePath()))).build();
+//        Picasso.setSingletonInstance(picasso);
+////
+
+
+
 
         //picasso可以对多个加载请求设置相同的tag
         Picasso.with(this)
 //                .load("http://f.hiphotos.baidu.com/zhidao/pic/item/a8ec8a13632762d0aac65c45a2ec08fa503dc654.jpg")
                 .load("https://ylb-next-public.oss-cn-qingdao.aliyuncs.com/2y10fRWPI394ERDRLOm5qoaUH1Rj85k6cXMl1I9W2VBg2QlVqKlPz6.png")
-                .transform(transformation)//可以自定义图片显示的大小
-                .config(Bitmap.Config.RGB_565)//比ARGB_8888图片内存占用少一半
-                .tag(this)
+//                .transform(transformation)//可以自定义图片显示的大小
+//                .config(Bitmap.Config.RGB_565)//比ARGB_8888图片内存占用少一半
+//                .tag(this)
                 //NO_CACHE是指图片加载时放弃在内存缓存中查找，NO_STORE是指图片加载完不缓存在内存中。但可以从磁盘查找如有，无网络也可显示
-//                .memoryPolicy(MemoryPolicy.NO_CACHE, MemoryPolicy.NO_STORE)
+//                .memoryPolicy(MemoryPolicy.NO_CACHE, MemoryPolicy.NO_CACHE)
+//                .networkPolicy(NetworkPolicy.NO_CACHE, NetworkPolicy.NO_CACHE)
                 .into(image)
 
         ;
+        //不做任何设置的时候，无网络的情况下，加载内存缓存图片
 
 //        String a = "哇哈哈哈[em:5]aa8888[em:7]";
 //        String r = "\\[em:(\\d+)\\]";
@@ -103,19 +105,7 @@ public class ImageActivity extends BaseActivity {
         });
     }
 
-    public static String getStoragePath() {
-        String storagePath = "";
-        boolean sdCardExist = Environment.getExternalStorageState().equals(
-                android.os.Environment.MEDIA_MOUNTED);
-        if(sdCardExist) {
-            storagePath = Environment.getExternalStorageDirectory().getAbsolutePath() +File.separator+ "aaaaa";
-            File file = new File(storagePath);
-            if (!file.exists()) {
-                file.mkdirs();
-            }
-        }
-        return storagePath;
-    }
+
 
     @Override
     protected void onClickView(View view) {

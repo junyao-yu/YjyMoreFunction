@@ -131,6 +131,11 @@
             android:layout_height="wrap_content"
             android:text="画draw3"
             android:id="@+id/btn_draw3"/>
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="xxxxxx"
+            android:id="@+id/btn_xxxxxx"/>
     </LinearLayout>
 
 </ScrollView>
