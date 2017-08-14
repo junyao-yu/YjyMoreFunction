@@ -2,8 +2,8 @@
     <string name="app_name">YjyMoreFunctions</string>
     <string name="test" formatted="false">测试%s，%d测试</string>
 
-  <string name="my_behavior">com.yjymorefunctions.views.MyBehavior</string>
-  <string name="scroll_behavior">com.yjymorefunctions.views.ScrollBehavior</string>
+    <string name="my_behavior">com.yjymorefunctions.views.MyBehavior</string>
+    <string name="scroll_behavior">com.yjymorefunctions.views.ScrollBehavior</string>
 
     <string name="text">{
   "memory": "8388608",

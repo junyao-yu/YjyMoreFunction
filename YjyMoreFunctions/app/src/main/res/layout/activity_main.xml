@@ -136,6 +136,11 @@
             android:layout_height="wrap_content"
             android:text="xxxxxx"
             android:id="@+id/btn_xxxxxx"/>
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="btn_span_text"
+            android:id="@+id/btn_span"/>
     </LinearLayout>
 
 </ScrollView>
