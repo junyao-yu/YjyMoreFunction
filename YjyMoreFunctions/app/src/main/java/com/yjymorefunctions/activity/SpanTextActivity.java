@@ -7,6 +7,7 @@ import android.text.SpannableString;
 import android.text.TextPaint;
 import android.text.method.LinkMovementMethod;
 import android.text.style.ClickableSpan;
+import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -54,6 +55,26 @@ public class SpanTextActivity extends BaseActivity {
         span.setMovementMethod(LinkMovementMethod.getInstance());
         span.setHighlightColor(getResources().getColor(R.color.color_00000000));
 
+
+        /**
+         * ThreadLocal的简单引用，线程作用于，不同线程，不同数据副本
+         */
+        mThreadLocal.set("主线程");
+        Log.e("print--->", mThreadLocal.get());
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                mThreadLocal.set("线程1");
+                Log.e("print--->", mThreadLocal.get());
+            }
+        }).start();
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                mThreadLocal.set("线程2");
+                Log.e("print--->", mThreadLocal.get());
+            }
+        }).start();
     }
 
     @Override
@@ -65,5 +86,8 @@ public class SpanTextActivity extends BaseActivity {
     protected int getLayoutResId() {
         return R.layout.activity_span_text;
     }
+
+
+    private ThreadLocal<String> mThreadLocal = new ThreadLocal<>();
 
 }

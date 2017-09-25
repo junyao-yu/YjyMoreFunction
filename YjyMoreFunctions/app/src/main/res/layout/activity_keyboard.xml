@@ -1,0 +1,40 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <EditText
+        android:id="@+id/editText1"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginRight="24dp"
+        android:ems="10"
+        android:inputType="none" >
+
+        <requestFocus />
+    </EditText>
+    <Button
+        android:id="@+id/button1"
+        android:layout_below="@+id/editText1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="点击我"/>
+
+    <com.example.ex_exp.MyKeyBoardView
+        android:id="@+id/keyboardview"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginTop="5.0dp"
+        android:background="#ffffffff"
+        android:focusable="true"
+        android:hapticFeedbackEnabled="false"
+        android:keyTextColor="#000000"
+        android:keyTextSize="26.0sp"
+        android:shadowColor="#ffffffff"
+        android:keepScreenOn="false"
+        android:shadowRadius="0.0"
+        android:visibility="gone" />
+
+</RelativeLayout>
