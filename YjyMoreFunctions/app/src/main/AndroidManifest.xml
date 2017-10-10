@@ -80,6 +80,8 @@
         <activity android:name=".activity.kotlinActivity"></activity>
         <activity android:name=".activity.kotlinActivity"/>
         <activity android:name=".activity.SpanTextActivity"/>
+        <activity android:name=".activity.Behaviour1Activity"/>
+        <activity android:name=".activity.Behaviour2Activity"/>
     </application>
 
 </manifest>

@@ -141,6 +141,21 @@
             android:layout_height="wrap_content"
             android:text="btn_span_text"
             android:id="@+id/btn_span"/>
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="btn_behaviour1"
+            android:id="@+id/btn_behaviour1"/>
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="btn_behaviour2"
+            android:id="@+id/btn_behaviour2"/>
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="btn_behaviour3"
+            android:id="@+id/btn_behaviour3"/>
     </LinearLayout>
 
 </ScrollView>

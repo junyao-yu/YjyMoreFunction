@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <android.support.design.widget.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:elevation="0dp">
+        <android.support.design.widget.CollapsingToolbarLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_scrollFlags="scroll|exitUntilCollapsed">
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="300dp"
+                android:scaleType="centerCrop"
+                android:src="@drawable/pic_teacher"
+                app:layout_collapseMode="parallax"
+                app:layout_collapseParallaxMultiplier="0.9" />
+
+            <FrameLayout
+                android:id="@+id/frameLayout"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:layout_gravity="bottom|center_horizontal"
+                android:background="@color/color_cbff00"
+                android:orientation="vertical"
+                app:layout_collapseMode="parallax"
+                app:layout_collapseParallaxMultiplier="0.3"/>
+        </android.support.design.widget.CollapsingToolbarLayout>
+    </android.support.design.widget.AppBarLayout>
+
+
+    <android.support.v4.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scrollbars="none"
+        app:behavior_overlapTop="30dp"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="20sp"
+            android:text="摩诃大6，同样是位列大千世界级大6的行列，辽阔无尽，资源丰厚，这座大6，
+            在整个大千世界，都是拥有着极为响亮的名声。当然，其中大部分的原因，也是因为有着摩诃古族的存在。
+    作为大千世界五大古族之一，摩诃古族存在了悠久的岁月，即便是在那上古年代时，摩诃古族都是极为强大的势力，到得如今，底蕴积累下来，论起实力，在整个大千世界那也算是能够排的上号...
+    想那当年，无尽火域在大千世界中如火如荼的展起来，摩诃古族摩诃天继承族长之位，试图吞并刚刚展起来的无尽火域，以此立威震慑族内族外。
+    但那个时候，恐怕整个摩诃古族都没料到，那个从下位面而来的炎帝，竟然会是一个出乎意料的厉害角色，最后竟是硬生生的将摩诃天的野心打碎，不仅没能吞并成功，反而还搞得灰头土脸，成就了无尽火域的地位与名气...
+    不过虽然摩诃天在与炎帝的较量中失败了，但伴随着如今炎帝的名气愈的如日中天，大有成为大千世界中数一数二的巅峰存在时，摩诃天那曾经的失败，反倒是成了某种其自身实力的证明，虽然心气高傲的摩诃天根本不屑这种证明，但在大千世界其他的人心中，却是会如此的认为...
+    毕竟，能够与炎帝斗成那般模样，也足以说明，摩诃天的实力，同样不可小觑。
+    所以，这些年来，摩诃古族的名气也是愈的强盛，在五大古族之中，已是位居位，不论底蕴还是巅峰强者的数量，都傲视了其他四族。"/>
+        </LinearLayout>
+    </android.support.v4.widget.NestedScrollView>
+
+    <!--app:layout_anchor=”@id/frameLayout”这个属性，是附着的意思，
+    这里我用作给了toolbar，代表toolbar附着在了frameLayout之上。会跟随frameLayout的scroll而变化Y的值。-->
+    <android.support.v7.widget.Toolbar
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/colorAccent"
+        app:layout_anchor="@id/frameLayout">
+    </android.support.v7.widget.Toolbar>
+
+    <TextView
+        android:id="@+id/tv_title"
+        android:textColor="#aa0000"
+        android:textSize="18sp"
+        android:gravity="center"
+        android:text="头条"
+        app:layout_behavior="com.yjymorefunctions.utils.DrawerBehaviour"
+        android:background="@color/color_cbff00"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"/>
+</android.support.design.widget.CoordinatorLayout>
