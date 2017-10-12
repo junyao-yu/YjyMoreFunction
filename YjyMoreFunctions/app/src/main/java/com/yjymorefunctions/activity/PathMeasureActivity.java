@@ -9,13 +9,12 @@ import com.yjymorefunctions.base.BaseActivity;
 
 /**
  * Auth：yujunyao
- * Since: 2017/6/2 下午3:34
+ * Since: 2017/10/12 下午5:41
  * Email：yujunyao@ylb.net
- * http://blog.csdn.net/u012702547/article/details/51286288
  */
 
 
-public class CoordinatorActivity extends BaseActivity {
+public class PathMeasureActivity extends BaseActivity {
     @Override
     protected void onInitParams(Intent intent) {
 
@@ -33,6 +32,6 @@ public class CoordinatorActivity extends BaseActivity {
 
     @Override
     protected int getLayoutResId() {
-        return R.layout.activity_coordinator;
+        return R.layout.activity_path_measure;
     }
 }
