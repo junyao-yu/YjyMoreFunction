@@ -67,7 +67,7 @@ public class MainActivity extends BaseActivity {
     ,R.id.btn_vertical_scroll, R.id.btn_storage_in_app, R.id.btn_rxjava_android, R.id.btn_greendao, R.id.btn_ruler, R.id.btn_behaviour
     ,R.id.btn_gradient, R.id.btn_sgz, R.id.btn_thread_pool, R.id.btn_dialog_fragment, R.id.btn_sroller, R.id.btn_window, R.id.btn_draw
     ,R.id.btn_replace_icon, R.id.btn_replace_icon_temp, R.id.btn_draw2, R.id.btn_refresh, R.id.btn_webview, R.id.btn_draw3,
-    R.id.btn_xxxxxx, R.id.btn_span, R.id.btn_behaviour1, R.id.btn_behaviour2, R.id.btn_pathmeasure})
+    R.id.btn_xxxxxx, R.id.btn_span, R.id.btn_behaviour1, R.id.btn_behaviour2, R.id.btn_pathmeasure,R.id.btn_dagger2})
     @Override
     public void onClickView(View view) {
         switch (view.getId()) {
@@ -161,6 +161,10 @@ public class MainActivity extends BaseActivity {
                 break;
             case R.id.btn_pathmeasure:
                 startActivity(new Intent(MainActivity.this, PathMeasureActivity.class));
+                break;
+            case R.id.btn_dagger2:
+//                startActivity(new Intent(MainActivity.this, DaggerActivity.class));
+                startActivity(new Intent(MainActivity.this, kotlinActivity.class));
                 break;
         }
     }

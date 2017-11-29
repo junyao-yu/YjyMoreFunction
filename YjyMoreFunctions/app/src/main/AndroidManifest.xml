@@ -77,7 +77,6 @@
         <activity android:name=".activity.WebActivity" />
         <activity android:name=".activity.Draw3Activity" />
         <activity android:name=".activity.CoordinatorActivity" />
-        <activity android:name=".activity.kotlinActivity"></activity>
         <activity android:name=".activity.kotlinActivity"/>
         <activity android:name=".activity.SpanTextActivity"/>
         <activity android:name=".activity.Behaviour1Activity"/>
