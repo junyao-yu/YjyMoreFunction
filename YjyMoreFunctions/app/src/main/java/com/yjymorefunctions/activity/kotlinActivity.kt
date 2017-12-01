@@ -159,7 +159,29 @@ class kotlinActivity : AppCompatActivity() {
         account add 200.0
         println("${account.balance}")
 
+
+        //多行输入，三个双引号
+        var mutipleLine = """
+one
+two
+three"""
+        println(mutipleLine)
+
+        //companion
+        CompanionClass1.create()
+        //没有companion的话
+        CompanionClass1.Factory.create()
+
+        println(CompanionClass2.Companion.x)//或者println(CompanionClass2.x)
+
+
+        //不用inner
+        var outer = Outer.Nested().foo()
+        //用inner
+        var outer2 = Outer2().Nested().foo()
+
     }
+
 
     /**
      * infix函数需要几个条件:

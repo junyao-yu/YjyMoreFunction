@@ -12,13 +12,21 @@ class A {
     get() = field.toUpperCase()
 
     var num: Int = 100
-    get() = field
+    get() = field * 2
     set(value) {
-        if (value < 10) {
-            field = value
-        } else {
-            field = -1
+
+        when(value) {
+            in 1..10 -> field = value
+            else -> {
+                field = -1
+            }
         }
+
+//        if (value < 10) {
+//            field = value
+//        } else {
+//            field = -1
+//        }
     }
 
 
