@@ -1,12 +1,14 @@
 package com.yjymorefunctions.activity;
 
 import android.content.Intent;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.text.Spannable;
 import android.text.SpannableString;
 import android.text.TextPaint;
 import android.text.method.LinkMovementMethod;
 import android.text.style.ClickableSpan;
+import android.text.style.ImageSpan;
 import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
@@ -37,6 +39,13 @@ public class SpanTextActivity extends BaseActivity {
     protected void setupViews(Bundle savedInstanceState) {
         String text="我是苏苏，打开另外一个Activity吧";
         SpannableString spannableString=new SpannableString(text);
+
+        Drawable drawable = getResources().getDrawable(R.drawable.tip_no_news_icon);
+        drawable.setBounds(0, 0, 50, 50);
+        ImageSpan spanImage = new ImageSpan(drawable, ImageSpan.ALIGN_BASELINE);
+
+        spannableString.setSpan(spanImage, 5, 6, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+
         spannableString.setSpan(new ClickableSpan() {
 
             @Override

@@ -30,7 +30,8 @@ import de.greenrobot.event.ThreadMode;
  * Email：yujunyao@yonglibao.com
  */
 public class HttpActivity extends AppCompatActivity {
-    private static final String URL = "http://www.tngou.net/api/lore/classify";
+//    private static final String URL = "http://192.168.10.94:8080/Test/returnString";
+    private static final String URL = "http://192.168.10.94:8080/Test/returnBean";
     private TextView tv;
     private View view;
 
@@ -50,6 +51,7 @@ public class HttpActivity extends AppCompatActivity {
                 Request<Object> request = new NetRequest<>(Request.Method.GET, URL, null, new TestModel(), new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
+                        error.printStackTrace();
                         Toast.makeText(HttpActivity.this, "onErrorResponse", Toast.LENGTH_SHORT).show();
                     }
                 }, new Response.Listener<Object>(){
