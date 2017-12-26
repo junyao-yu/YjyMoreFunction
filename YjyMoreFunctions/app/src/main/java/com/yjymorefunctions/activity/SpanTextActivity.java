@@ -41,7 +41,7 @@ public class SpanTextActivity extends BaseActivity {
         SpannableString spannableString=new SpannableString(text);
 
         Drawable drawable = getResources().getDrawable(R.drawable.tip_no_news_icon);
-        drawable.setBounds(0, 0, 50, 50);
+        drawable.setBounds(0, 0, drawable.getIntrinsicWidth(), drawable.getIntrinsicHeight());
         ImageSpan spanImage = new ImageSpan(drawable, ImageSpan.ALIGN_BASELINE);
 
         spannableString.setSpan(spanImage, 5, 6, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
