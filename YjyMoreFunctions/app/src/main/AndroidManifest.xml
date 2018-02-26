@@ -82,6 +82,7 @@
         <activity android:name=".activity.Behaviour1Activity"/>
         <activity android:name=".activity.Behaviour2Activity"/>
         <activity android:name=".activity.PathMeasureActivity"/>
+        <activity android:name=".activity.DisplayDataActivity"/>
     </application>
 
 </manifest>

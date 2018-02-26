@@ -6,15 +6,35 @@ import android.util.Log
 import com.yjymorefunctions.R
 import com.yjymorefunctions.model.*
 import kotlinx.android.synthetic.main.activity_kotlin.*
+import kotlin.properties.Delegates
 
 
 class kotlinActivity : AppCompatActivity() {
 
     val temp: String? = null
 
+    var aaaaa: String by Delegates.observable("aaa") {
+        _, old, new ->
+        println("old--->" + old)
+        println("new--->" + new)
+    }
+
+    var bbbbb: String by Delegates.vetoable("ccc") {
+        _, old, new ->
+        println("xold--->" + old)
+        println("xnew--->" + new)
+        false  //返回false表示禁止修改,true表示可以修改
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_kotlin)
+
+        aaaaa = "bbb"
+
+        bbbbb = "ddd"
+        println("vetoable--->" + bbbbb)
+
         main_tv.text = "Hello Kotlin!!!"
 
         Thread(
@@ -160,12 +180,13 @@ class kotlinActivity : AppCompatActivity() {
         println("${account.balance}")
 
 
-        //多行输入，三个双引号
+        //多行输入，三个双引号、原生字符串
         var mutipleLine = """
-one
-two
-three"""
-        println(mutipleLine)
+ |one
+|two
+|three"""
+        println(mutipleLine.trimMargin())//trimMargin去除前岛空格，用"|"隔开
+        //也可以比如这样trimMargin(">")
 
         //companion
         CompanionClass1.create()
@@ -179,6 +200,23 @@ three"""
         var outer = Outer.Nested().foo()
         //用inner
         var outer2 = Outer2().Nested().foo()
+
+
+//        showActivity<DisplayDataActivity>(TestBundle(
+//                mutableMapOf(DisplayDataActivity.Companion.name to "lalala")))
+//        showActivity<DisplayDataActivity>(TestBundle(
+//                mutableMapOf(DisplayDataActivity.Companion.data to TestSubBundle("'1", "2", "3"))))
+
+        var a1  = 20
+        var b1 = 30
+        val max = if (a1 > b1) {
+            println("choose a1")
+            a1
+        } else {
+            println("choose b1")
+            b1
+        }
+        println(max)
 
     }
 
