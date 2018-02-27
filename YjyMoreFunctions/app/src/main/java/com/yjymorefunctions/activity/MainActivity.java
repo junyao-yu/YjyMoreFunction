@@ -8,6 +8,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
+import com.improve.utility.utils.LogUtil;
 import com.yjymorefunctions.R;
 import com.yjymorefunctions.base.BaseActivity;
 
@@ -30,7 +31,23 @@ public class MainActivity extends BaseActivity {
 
     @Override
     protected void onInitParams(Intent intent) {
+    }
 
+
+    /**
+     * 执行顺序为 first->end->middle
+     * @return
+     */
+    private String testPath() {
+        LogUtil.e("testPath", "first");
+        try {
+            return "middle";
+        } catch (Exception e) {
+
+        }finally {
+            LogUtil.e("testPath", "end");
+        }
+        return "aaa";
     }
 
     @Override
@@ -49,6 +66,8 @@ public class MainActivity extends BaseActivity {
         mPm = getApplicationContext().getPackageManager();
 
         Toast.makeText(this, getPackageName(), Toast.LENGTH_SHORT).show();
+
+        LogUtil.e("testPath", testPath());
     }
 
     @Subscribe(threadMode = ThreadMode.MainThread)
