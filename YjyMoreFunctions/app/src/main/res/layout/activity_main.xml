@@ -161,6 +161,11 @@
             android:layout_height="wrap_content"
             android:text="btn_kotlin"
             android:id="@+id/btn_dagger2"/>
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="btn_tabbar"
+            android:id="@+id/btn_tabbar"/>
     </LinearLayout>
 
 </ScrollView>

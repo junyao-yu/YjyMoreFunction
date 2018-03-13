@@ -119,4 +119,12 @@ public class HttpActivity extends AppCompatActivity {
         super.onDestroy();
         EventBus.getDefault().unregister(this);
     }
+
+    class aaaa implements View.OnClickListener {
+
+        @Override
+        public void onClick(View v) {
+            tv.setText("");
+        }
+    }
 }

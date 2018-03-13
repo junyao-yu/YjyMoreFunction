@@ -2,7 +2,9 @@ package com.yjymorefunctions.utils;
 
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
+import android.util.DisplayMetrics;
 import android.util.Log;
+import android.view.WindowManager;
 
 import com.yjymorefunctions.model.DaoMaster;
 import com.yjymorefunctions.model.DaoSession;
@@ -113,4 +115,27 @@ public class DbHelper extends DaoMaster.OpenHelper {
         return list;
     }
 
+
+    /**
+     * 获取屏幕的宽高
+     *
+     * @return
+     */
+    public static int[] screenWidth(Context context) {
+        WindowManager wm = (WindowManager) context.getSystemService(Context.WINDOW_SERVICE);
+        DisplayMetrics outMetrics = new DisplayMetrics();
+        wm.getDefaultDisplay().getMetrics(outMetrics);
+        int[] screen = new int[2];
+        screen[0] = outMetrics.widthPixels;
+        screen[1] = outMetrics.heightPixels;
+        return screen;
+    }
+
+    /**
+     * 根据手机的分辨率从 dp 的单位 转成为 px(像素)
+     */
+    public static int dip2px(Context context, int dpValue) {
+        final float scale = context.getResources().getDisplayMetrics().density;
+        return (int) (dpValue * scale + 0.5f);
+    }
 }
