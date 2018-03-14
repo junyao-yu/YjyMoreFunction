@@ -31,6 +31,7 @@ class BottomTabBar : LinearLayout, View.OnClickListener{
     private var selectTag: Int = 0
     private val diff = 500L//300毫秒
     private var lastClickTime: Long = 0L
+    private val DURATION = 100L
 
     private val items: MutableList<RelativeLayout> = ArrayList()
     private val images: MutableList<ImageView> = ArrayList()
@@ -56,11 +57,11 @@ class BottomTabBar : LinearLayout, View.OnClickListener{
             item?.layoutParams = params
             items.add(item as RelativeLayout)
 
-            var image = item.findViewById(R.id.image) as ImageView
+            var image = item.findViewById<ImageView>(R.id.image) as ImageView
             image.setImageResource(R.mipmap.ic_launcher)
             images.add(image)
 
-            var title = item.findViewById(R.id.title) as TextView
+            var title = item.findViewById<TextView>(R.id.title) as TextView
             title.text = "测试"
             labels.add(title)
 
@@ -81,7 +82,7 @@ class BottomTabBar : LinearLayout, View.OnClickListener{
             return
         }
         if (tag == selectTag) {
-            //TODO
+            //TODO做一些回到顶部，下拉刷新的效果
             callBack?.selectRepeat(tag)
         } else {
             selectTag = tag
@@ -131,7 +132,7 @@ class BottomTabBar : LinearLayout, View.OnClickListener{
 
         })
 
-        animatorSet.duration = 100
+        animatorSet.duration = DURATION
         animatorSet.playTogether(animatorScaleX, animatorScaleY)
         animatorSet.start()
     }
